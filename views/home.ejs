@@ -2,19 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Type Ahead 👀</title>
+    <title>Sriram J | Useful Tools</title>
     <link rel="stylesheet" href="css/main.css">
+
 </head>
 <body>
 <div class="window">
     <div class="bar">
         <div class="button"></div>
     </div>
-    <form class="search">
-        <input type="search" placeholder="Search">
-        <a href="#" class="action-button shadow animate green">Search Status</a>
-    </form>
+    <div class="search" >
+        <input id="trainno" type="search" placeholder="Search">
+        <button id="trainstatus" href="#" class="action-button shadow animate green">Search Status</button>
+    </div>
 </div>
 
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+<script>
+    $(function() {
+        var $trainno = $('#trainno');
+        $('#trainstatus').on('click', function () {
+            var data = {
+                trainno: $trainno.val()
+
+            };
+            $.ajax({
+                type: 'POST',
+                url: '/trainstatus',
+                data: data,
+                success: function (response) {
+                    $('#trainstatus').prop('disabled', false);
+
+
+                },
+                error: function () {
+                    alert('Error occurred while adding new buses! Try again later');
+                }
+            });
+
+        });
+    });
+</script>
 </body>
 </html>

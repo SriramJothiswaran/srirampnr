@@ -1,0 +1,84 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sriram J | Useful Tools</title>
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+<section>
+    <!--for demo wrap-->
+    <h1>Train Status Enquiry</h1>
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+            <tr>
+                <th>S.no</th>
+                <th>Station Name</th>
+                <th>Expected Arrival</th>
+                <th>Expected Departure</th>
+                <th>Actual Arrival</th>
+                <th>Actual Departure</th>
+                <th>Status</th>
+
+
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<!-- follow me template -->
+<div class="made-with-love">
+    Made with
+    <i>♥</i> by
+    <a target="_blank" href="">Sriram J</a>
+</div>
+<script>
+    $(window).on("load resize ", function() {
+        var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+        $('.tbl-header').css({'padding-right':scrollWidth});
+    }).resize();
+</script>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+<script>
+    $(function() {
+        var $trainno = $('#trainno');
+        $('#trainstatus').on('click', function () {
+            var data = {
+                trainno: $trainno.val()
+
+            };
+            $.ajax({
+                type: 'POST',
+                url: '/trainstatus',
+                data: data,
+                success: function (response) {
+                    $('#trainstatus').prop('disabled', false);
+
+
+                },
+                error: function () {
+                    alert('Error occurred while adding new buses! Try again later');
+                }
+            });
+
+        });
+    });
+
+</script>
+</body>
+</html>
