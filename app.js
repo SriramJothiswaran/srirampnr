@@ -1,52 +1,95 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const ejs = require('ejs');
-const path = require('path');
-const request = require('request');
-var trainApiKey = "i0tm7cgqa6";
-
-
+var express = require("express");
 var app = express();
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+const bodyParser = require('body-parser');
+const request = require("request");
 
 
+var port = 5000;
+var io = require('socket.io').listen(app.listen(port));
+
+
+app.set('views', __dirname + '/views');
+app.set('view engine', "ejs");
+app.engine('ejs', require('ejs').__express);
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-//
-//app.get('/',function(req,res){
-//   res.render('search',{});
-//});
+const btcUrl = "https://api.coinmarketcap.com/v1/ticker/bitcoin/?convert=INR";
+const xrpUrl = "https://api.coinmarketcap.com/v1/ticker/ripple/?convert=INR";
+const btcxUrl = "https://api.btcxindia.com/ticker/";
+const ethUrl = "https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=INR";
+var btcvalue = null;
+var xrpvalue = null;
+var ethvalue = null;
+var onedayBtc = null;
+var onedayXrp = null;
+var onedayEth = null;
 
 
 
-app.post('/trainstatus',function(req,res){
-   let trainno = req.body.trainno;
-   let today = new Date();
+function getStatus(req, res, next){
 
-   var dd = today.getDate();
-   var mm = today.getMonth()+1; //January is 0!
+   request.get(btcUrl,function(err,res,body){
+      if(err){
 
-   var yyyy = today.getFullYear();
-   if(dd<10){
-      dd='0'+dd;
-   }
-   if(mm<10){
-      mm='0'+mm;
-   }
-   today = dd+'-'+mm+'-'+yyyy;
-   let apikey = trainApiKey;
-   let url = `https://api.railwayapi.com/v2/live/train/${trainno}/date/${today}/apikey/${apikey}/`;
-   console.log(url);
+      }else{
+         btcvalue = JSON.parse(body)[0];
 
-   request(url, function (err, response, body) {
-      console.log(response);
+         onedayBtc = btcvalue["24h_volume_inr"];
+
+
+      }
+
    });
+   request.get(xrpUrl,function(err,res,body){
+      if(err){
+
+      }else{
+         xrpvalue = JSON.parse(body)[0];
+         onedayXrp = xrpvalue["24h_volume_inr"];
+
+      }
+
+   });
+   request.get(ethUrl,function(err,res,body){
+      if(err){
+
+      }else{
+         ethvalue = JSON.parse(body)[0];
+         onedayEth = ethvalue["24h_volume_inr"];
+
+
+
+      }
+      next();
+
+
+
+   });
+
+   // request.get(btcxUrl,function(err,res,body){
+   //    if(err){
+   //
+   //    }else{
+   //       btcxvalue = JSON.parse(body);
+   //       console.log(btcvalue);
+   //    }
+   //
+   //
+   //
+   // });
+}
+
+app.get("/", getStatus,function(req, res){
+   console.log(btcvalue);
+   res.render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth});
+
 });
 
 
+io.sockets.on('connection', function (socket) {
+   console.log('hello');
 
-app.listen(process.env.PORT || 5000);
+});
+console.log("Listening on port " + port);

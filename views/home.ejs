@@ -1,51 +1,140 @@
-
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Sriram J | Useful Tools</title>
-    <link rel="stylesheet" href="css/main.css">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Live Cryptocurreny Price</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src='/socket.io/socket.io.js' type='text/javascript'></script>
+    <script>
+        var socket = io();
+    </script>
 </head>
 <body>
-<div class="window">
-    <div class="bar">
-        <div class="button"></div>
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                <strong>Live</strong> Cryptocurreny Price
+            </h1>
+
+            <h2 class="subtitle">
+                BTC,XRP,ETH,LTC
+            </h2>
+        </div>
     </div>
-    <div class="search" >
-        <input id="trainno" type="search" placeholder="Search">
-        <button id="trainstatus" href="#" class="action-button shadow animate green">Search Status</button>
+</section>
+<div class="tile is-ancestor">
+    <div class="tile is-4 is-vertical is-parent">
+        <div class="tile is-child notification is-bitcoin ">
+            <p class="title">Bitcoin</p>
+            <p><strong>Price (INR) : &#x20b9; <%= btcvalue.price_inr%></strong></p>
+            <p><strong>Price (USD) : $ <%= btcvalue.price_usd%></strong></p>
+
+
+
+              <% if(btcvalue.percent_change_1h > 0){%>
+                  <p>Percentage Change (1h) : <span class="tag is-success">+<%= btcvalue.percent_change_1h%> %</span></p>
+              <%}%>
+              <% if(btcvalue.percent_change_1h < 0){%>
+                   <p>Percentage Change (1h) : <span class="tag is-danger"><%= btcvalue.percent_change_1h%> %</span></p>
+
+              <% }%>
+
+
+            <% if(btcvalue.percent_change_24h > 0){%>
+                <p>Percentage Change (24h) : <span class="tag is-success">+<%= btcvalue.percent_change_24h%> %</span></p>
+            <%}%>
+            <% if(btcvalue.percent_change_24h < 0){%>
+                 <p>Percentage Change (24h) : <span class="tag is-danger"><%= btcvalue.percent_change_24h%> %</span></p>
+
+            <% }%>
+
+            <p>Available Supply : <%=btcvalue.available_supply%> </p>
+            <p>Total Supply : <%=btcvalue.total_supply%> </p>
+            <p>Maximum Supply : <%=btcvalue.max_supply%> </p>
+            <p>Market Cap (INR) : &#x20b9; <%=btcvalue.market_cap_inr%> </p>
+            <p>24h Volume (INR) : &#x20b9; <%=onedayBtc%> </p>
+
+
+        </div>
+        <div class="tile is-child box">
+            <p class="title">Ethereum</p>
+            <p><strong>Price (INR) : &#x20b9; <%= ethvalue.price_inr%></strong></p>
+            <p><strong>Price (USD) : $ <%= ethvalue.price_usd%></strong></p>
+
+
+
+              <% if(ethvalue.percent_change_1h > 0){%>
+                  <p>Percentage Change (1h) : <span class="tag is-success">+<%= ethvalue.percent_change_1h%> %</span></p>
+              <%}%>
+              <% if(ethvalue.percent_change_1h < 0){%>
+                   <p>Percentage Change (1h) : <span class="tag is-danger"><%= ethvalue.percent_change_1h%> %</span></p>
+
+              <% }%>
+
+
+            <% if(ethvalue.percent_change_24h > 0){%>
+                <p>Percentage Change (24h) : <span class="tag is-success">+<%= ethvalue.percent_change_24h%> %</span></p>
+            <%}%>
+            <% if(ethvalue.percent_change_24h < 0){%>
+                 <p>Percentage Change (24h) : <span class="tag is-danger"><%= ethvalue.percent_change_24h%> %</span></p>
+
+            <% }%>
+
+            <p>Available Supply : <%=ethvalue.available_supply%> </p>
+            <p>Total Supply : <%=ethvalue.total_supply%> </p>
+            <p>Market Cap (INR) : &#x20b9; <%=ethvalue.market_cap_inr%> </p>
+            <p>24h Volume (INR) : &#x20b9; <%=onedayEth%> </p>
+        </div>
+    </div>
+    <div class="tile is-parent">
+        <div class="tile is-child notification is-ripple">
+            <p class="title">Ripple(Network Price)</p>
+            <p><strong>Price (INR) : &#x20b9; <%= xrpvalue.price_inr%></strong></p>
+            <p><strong>Price (USD) : $ <%= xrpvalue.price_usd%></strong></p>
+
+
+
+              <% if(xrpvalue.percent_change_1h > 0){%>
+                  <p>Percentage Change (1h) : <span class="tag is-success">+<%= xrpvalue.percent_change_1h%> %</span></p>
+              <%}%>
+              <% if(xrpvalue.percent_change_1h < 0){%>
+                   <p>Percentage Change (1h) : <span class="tag is-danger"><%= xrpvalue.percent_change_1h%> %</span></p>
+
+              <% }%>
+
+
+            <% if(xrpvalue.percent_change_24h > 0){%>
+                <p>Percentage Change (24h) : <span class="tag is-success">+<%= xrpvalue.percent_change_24h%> %</span></p>
+            <%}%>
+            <% if(xrpvalue.percent_change_24h < 0){%>
+                 <p>Percentage Change (24h) : <span class="tag is-danger"><%= xrpvalue.percent_change_24h%> %</span></p>
+
+            <% }%>
+
+            <p>Available Supply : <%=xrpvalue.available_supply%> </p>
+            <p>Total Supply : <%=xrpvalue.total_supply%> </p>
+            <p>Maximum Supply : <%=xrpvalue.max_supply%> </p>
+            <p>Market Cap (INR) : &#x20b9; <%=xrpvalue.market_cap_inr%> </p>
+            <p>24h Volume (INR) : &#x20b9; <%=onedayXrp%> </p>
+            <hr>
+            <p class="title">BtcxIndia Price</p>
+              <h1>Coming Soon !</h1>
+            </div>
     </div>
 </div>
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+               Made with <span class="icon"><i class="fa fa-heart"></i></span>  by <a href="https://www.facebook.com/sriramVJrasigan">Sriram J</a>.
+            </p>
+        </div>
+    </div>
+</footer>
 
-<script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-
-<script>
-    $(function() {
-        var $trainno = $('#trainno');
-        $('#trainstatus').on('click', function () {
-            var data = {
-                trainno: $trainno.val()
-
-            };
-            $.ajax({
-                type: 'POST',
-                url: '/trainstatus',
-                data: data,
-                success: function (response) {
-                    $('#trainstatus').prop('disabled', false);
-
-
-                },
-                error: function () {
-                    alert('Error occurred while adding new buses! Try again later');
-                }
-            });
-
-        });
-    });
-</script>
 </body>
 </html>
