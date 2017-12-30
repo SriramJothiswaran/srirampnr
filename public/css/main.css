@@ -1,5 +1,5 @@
 section{
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 .notification.is-ripple {
@@ -12,7 +12,7 @@ section{
     color: #fff;
 }
 
-
-
-
-
+.Marquee{
+  background: -webkit-linear-gradient(225deg, #008ed9, #8b00db);
+  color: white;
+}

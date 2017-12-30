@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const request = require("request");
 
 
-var port = process.env.PORT;
+// var port = process.env.PORT;
+var port = 5000;
+
 var io = require('socket.io').listen(app.listen(port));
 
 
