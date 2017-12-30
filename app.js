@@ -58,11 +58,12 @@ function getStatus(req, res, next){
       }else{
          ethvalue = JSON.parse(body)[0];
          onedayEth = ethvalue["24h_volume_inr"];
+         next();
+
 
 
 
       }
-      next();
 
 
 
