@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const request = require("request");
 var moment = require('moment');
 moment().format();
+var cloudscraper = require('cloudscraper');
 
 
 var port = process.env.PORT;
@@ -26,12 +27,14 @@ const ethUrl = "https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=INR";
 var btcvalue = null;
 var xrpvalue = null;
 var ethvalue = null;
+var btcxvalue = null;
 var onedayBtc = null;
 var onedayXrp = null;
 var onedayEth = null;
 var btcTimeStamp = null;
 var ethTimeStamp = null;
 var xrpTimeStamp = null;
+var btcxTimeStamp = null;
 
 
 
@@ -68,20 +71,23 @@ function getStatus(req, res, next){
          ethvalue = JSON.parse(body)[0];
          ethTimeStamp = moment.unix(ethvalue.last_updated).utcOffset("+05:30").format("Do MMMM YYYY, HH:mm");
          onedayEth = ethvalue["24h_volume_inr"];
-
-         setTimeout(function(){
-           next();
-         }, 3000);
-
-
-
-
-
       }
 
 
 
    });
+
+   cloudscraper.get(btcxUrl, function(error, response, body) {
+     if (error) {
+       console.log('Error occurred');
+     } else {
+       btcxvalue = JSON.parse(body);
+       setTimeout(function(){
+         next();
+       }, 3000);
+     }
+   });
+
 
    // request.get(btcxUrl,function(err,res,body){
    //    if(err){
@@ -97,8 +103,7 @@ function getStatus(req, res, next){
 }
 
 app.get("/", getStatus,function(req, res){
-   console.log(btcvalue);
-   res.render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp});
+   res.render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp,btcxvalue:btcxvalue});
 
 });
 
