@@ -43,7 +43,7 @@ function getStatus(req, res, next){
 
       }else{
          btcvalue = JSON.parse(body)[0];
-         btcTimeStamp = moment.unix(btcvalue.last_updated).format("Do MMMM YYYY, HH:mm Z");
+         btcTimeStamp = moment.unix(btcvalue.last_updated).utcOffset("+05:30").format("Do MMMM YYYY, HH:mm");
          onedayBtc = btcvalue["24h_volume_inr"];
 
 
@@ -55,7 +55,7 @@ function getStatus(req, res, next){
 
       }else{
          xrpvalue = JSON.parse(body)[0];
-         xrpTimeStamp = moment.unix(xrpvalue.last_updated).format("Do MMMM YYYY, HH:mm Z");
+         xrpTimeStamp = moment.unix(xrpvalue.last_updated).utcOffset("+05:30").format("Do MMMM YYYY, HH:mm");
          onedayXrp = xrpvalue["24h_volume_inr"];
 
       }
@@ -66,7 +66,7 @@ function getStatus(req, res, next){
 
       }else{
          ethvalue = JSON.parse(body)[0];
-         ethTimeStamp = moment.unix(ethvalue.last_updated).format("Do MMMM YYYY, HH:mm Z");
+         ethTimeStamp = moment.unix(ethvalue.last_updated).utcOffset("+05:30").format("Do MMMM YYYY, HH:mm");
          onedayEth = ethvalue["24h_volume_inr"];
 
          setTimeout(function(){
