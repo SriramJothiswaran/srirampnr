@@ -83,9 +83,10 @@ function getStatus(req, res, next){
        console.log('Error occurred');
      } else {
        btcxvalue = JSON.parse(body);
-       setTimeout(function(){
-         next();
-       }, 3000);
+       next();
+       // setTimeout(function(){
+       //   next();
+       // }, 3000);
      }
    });
 }

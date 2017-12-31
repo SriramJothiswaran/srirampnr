@@ -156,18 +156,21 @@
 
             <hr>
             <p class="title">BtcxIndia Price</p>
-              <p> <strong> Price : &#x20b9;
-                <% if(btcxvalue.ask == null){%>
-                  <span id="btcxvalueinr"> <span class="help"></span> </span>
+
+            <% if(btcxvalue.ask == null){%>
+              <div id="loader" class="help"></div>
+              <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"> </span>
+                <p>Last Traded Price : &#x20b9; <span id="btcxtrade"></span> </p>
+                <p>Total Volume (24h) : <span id="btcxvol"></span> XRP</p>
                 <% }%>
 
                 <% if(btcxvalue.ask != null){%>
                 <span id="btcxvalueinr"><%= btcxvalue.ask%></span></strong>
+                <p>Last Traded Price : &#x20b9; <span id="btcxtrade"><%=btcxvalue.last_traded_price%></span> </p>
+                <p>Total Volume (24h) : <span id="btcxvol"><%=btcxvalue.total_volume_24h%></span> XRP</p>
                 <% }%>
 
               </p>
-              <p>Last Traded Price : &#x20b9; <span id="btcxtrade"><%=btcxvalue.last_traded_price%></span> </p>
-              <p>Total Volume (24h) : <span id="btcxvol"><%=btcxvalue.total_volume_24h%></span> XRP</p>
             </div>
     </div>
 </div>
@@ -218,7 +221,7 @@ function fetchdata(){
 }
 
 $(document).ready(function(){
- setInterval(fetchdata,5000);
+ setInterval(fetchdata,3000);
 });
 </script>
 </html>
