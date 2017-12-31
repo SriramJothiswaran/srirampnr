@@ -29,6 +29,10 @@ var ethvalue = null;
 var onedayBtc = null;
 var onedayXrp = null;
 var onedayEth = null;
+var btcTimeStamp = null;
+var ethTimeStamp = null;
+var xrpTimeStamp = null;
+
 
 
 
@@ -39,7 +43,7 @@ function getStatus(req, res, next){
 
       }else{
          btcvalue = JSON.parse(body)[0];
-
+         btcTimeStamp = moment.unix(btcvalue.last_updated).format("Do MMMM YYYY, HH:mm");
          onedayBtc = btcvalue["24h_volume_inr"];
 
 
@@ -51,6 +55,7 @@ function getStatus(req, res, next){
 
       }else{
          xrpvalue = JSON.parse(body)[0];
+         xrpTimeStamp = moment.unix(xrpvalue.last_updated).format("Do MMMM YYYY, HH:mm");
          onedayXrp = xrpvalue["24h_volume_inr"];
 
       }
@@ -61,6 +66,7 @@ function getStatus(req, res, next){
 
       }else{
          ethvalue = JSON.parse(body)[0];
+         ethTimeStamp = moment.unix(ethvalue.last_updated).format("Do MMMM YYYY, HH:mm");
          onedayEth = ethvalue["24h_volume_inr"];
 
          setTimeout(function(){
@@ -92,7 +98,7 @@ function getStatus(req, res, next){
 
 app.get("/", getStatus,function(req, res){
    console.log(btcvalue);
-   res.render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth});
+   res.render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp});
 
 });
 
