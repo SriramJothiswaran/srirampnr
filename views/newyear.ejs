@@ -10,13 +10,11 @@
       <link rel="stylesheet" href="/css/style.css">
 
 
+
 </head>
 
 <body>
-  <audio src="/newyear.mp3" autoplay>
-  <p>If you are reading this, it is because your browser does not support the audio element.     </p>
-  <embed src="/newyear.mp3" width="180" height="90" hidden="true" />
-  </audio>
+
   <svg class="scene" viewBox="0 0 1600 900">
   <clipPath id="sceneClipPath">
      <rect x="0" y="0" width="1600" height="900" />
@@ -1329,7 +1327,14 @@
 
     <script  src="/js/year.js"></script>
 
+    <script type="text/javascript">
+    document.body.addEventListener('click', fn, true);
+    function fn(){
+      var audio = new Audio('/newyear.mp3');
+      audio.play();
+    }
 
+    </script>
 
 
 </body>
