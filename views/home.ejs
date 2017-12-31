@@ -159,13 +159,13 @@
 
             <% if(btcxvalue.ask == null){%>
               <div id="loader" class="help"></div>
-              <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"> </span>
+              <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"> </span></strong>
                 <p>Last Traded Price : &#x20b9; <span id="btcxtrade"></span> </p>
                 <p>Total Volume (24h) : <span id="btcxvol"></span> XRP</p>
                 <% }%>
 
                 <% if(btcxvalue.ask != null){%>
-                <span id="btcxvalueinr"><%= btcxvalue.ask%></span></strong>
+                <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"><%= btcxvalue.ask%></span></strong>
                 <p>Last Traded Price : &#x20b9; <span id="btcxtrade"><%=btcxvalue.last_traded_price%></span> </p>
                 <p>Total Volume (24h) : <span id="btcxvol"><%=btcxvalue.total_volume_24h%></span> XRP</p>
                 <% }%>
