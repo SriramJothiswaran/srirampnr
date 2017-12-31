@@ -52,12 +52,13 @@
     </div>
 </section>
 <div class="Marquee">
-  <marquee>Live price reload and push notifications are coming soon. Until then enjoy blockchain.</marquee>
+  <marquee>Live price reloading has been added. Stay on this page, content loads automatically when change occurs. Let's Blockchain.  </marquee>
 </div>
 <div class="tile is-ancestor">
     <div class="tile is-4 is-vertical is-parent">
         <div class="tile is-child notification is-bitcoin ">
             <p class="title">Bitcoin</p>
+
             <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <%= btcvalue.price_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
             <p><strong>Price (USD) : $<span id="btcvalueusd"><%= btcvalue.price_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
 
