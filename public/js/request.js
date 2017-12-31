@@ -81,7 +81,9 @@ document.getElementById('xrptime').innerHTML = response.xrpTimeStamp;
 //btcx
 
 if(response.btcxvalue.ask != null){
-  document.getElementById('loader').classList.remove("help");
+  if(document.getElementById('loader').classList != null){
+    document.getElementById('loader').classList.remove("help");
+  }
   document.getElementById('btcxvalueinr').innerHTML = response.btcxvalue.ask;
 
 }
