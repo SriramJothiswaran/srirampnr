@@ -41,6 +41,7 @@ var btcxTimeStamp = null;
 
 function getStatus(req, res, next){
 
+
    request.get(btcUrl,function(err,res,body){
       if(err){
 
@@ -87,24 +88,15 @@ function getStatus(req, res, next){
        }, 3000);
      }
    });
-
-
-   // request.get(btcxUrl,function(err,res,body){
-   //    if(err){
-   //
-   //    }else{
-   //       btcxvalue = JSON.parse(body);
-   //       console.log(btcvalue);
-   //    }
-   //
-   //
-   //
-   // });
 }
 
 app.get("/", getStatus,function(req, res){
    res.render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp,btcxvalue:btcxvalue});
 
+});
+
+app.post('/updateprice',getStatus, function(req,res){
+    res.send({btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp,btcxvalue:btcxvalue});
 });
 
 

@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
     <link rel="stylesheet" href="/css/main.css">
+
+    <script type="text/javascript" src="/js/request.js"></script>
+
     <script src='/socket.io/socket.io.js' type='text/javascript'></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111767825-1"></script>
@@ -43,8 +46,7 @@
             </h1>
 
             <h2 class="subtitle">
-                BTC,XRP,ETH<br>
-
+                BTC,XRP,ETH <br>
             </h2>
         </div>
     </div>
@@ -56,107 +58,116 @@
     <div class="tile is-4 is-vertical is-parent">
         <div class="tile is-child notification is-bitcoin ">
             <p class="title">Bitcoin</p>
-            <p><strong>Price (INR) : &#x20b9; <%= btcvalue.price_inr%></strong></p>
-            <p><strong>Price (USD) : $ <%= btcvalue.price_usd%></strong></p>
+            <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <%= btcvalue.price_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
+            <p><strong>Price (USD) : $<span id="btcvalueusd"><%= btcvalue.price_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
 
 
 
               <% if(btcvalue.percent_change_1h > 0){%>
-                  <p>Percentage Change (1h) : <span class="tag is-success">+<%= btcvalue.percent_change_1h%> %</span></p>
+                  <p>Percentage Change (1h) : <span id="btc1hchangegreen" class="tag is-success">+<%= btcvalue.percent_change_1h%> %</span></p>
               <%}%>
               <% if(btcvalue.percent_change_1h < 0){%>
-                   <p>Percentage Change (1h) : <span class="tag is-danger"><%= btcvalue.percent_change_1h%> %</span></p>
+                   <p>Percentage Change (1h) : <span id="btc1hchangered" class="tag is-danger"><%= btcvalue.percent_change_1h%> %</span></p>
 
               <% }%>
 
 
             <% if(btcvalue.percent_change_24h > 0){%>
-                <p>Percentage Change (24h) : <span class="tag is-success">+<%= btcvalue.percent_change_24h%> %</span></p>
+                <p>Percentage Change (24h) : <span id="btc24hchangegreen" class="tag is-success">+<%= btcvalue.percent_change_24h%> %</span></p>
             <%}%>
             <% if(btcvalue.percent_change_24h < 0){%>
-                 <p>Percentage Change (24h) : <span class="tag is-danger"><%= btcvalue.percent_change_24h%> %</span></p>
+                 <p>Percentage Change (24h) : <span id="btc24hchangered" class="tag is-danger"><%= btcvalue.percent_change_24h%> %</span></p>
 
             <% }%>
 
-            <p>Available Supply : <%=btcvalue.available_supply%> BTC </p>
-            <p>Total Supply : <%=btcvalue.total_supply%> BTC </p>
-            <p>Maximum Supply : <%=btcvalue.max_supply%> BTC </p>
-            <p>Market Cap (INR) : &#x20b9; <%=btcvalue.market_cap_inr%> </p>
-            <p>24h Volume (INR) : &#x20b9; <%=onedayBtc%> </p>
-            <p>Last Updated : <%=btcTimeStamp%> IST </p>
+            <p>Available Supply :<span id="btcavail"><%=btcvalue.available_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+            <p>Total Supply : <span id="btctotal"><%=btcvalue.total_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+            <p>Maximum Supply : <span id="btcmax"><%=btcvalue.max_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+            <p>Market Cap (INR) : &#x20b9; <span id="btccap"><%=btcvalue.market_cap_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>24h Volume (INR) : &#x20b9; <span id="btcday"><%=onedayBtc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>Last Updated : <span id="btctime"><%=btcTimeStamp%></span> IST </p>
 
 
 
         </div>
         <div class="tile is-child box">
             <p class="title">Ethereum</p>
-            <p><strong>Price (INR) : &#x20b9; <%= ethvalue.price_inr%></strong></p>
-            <p><strong>Price (USD) : $ <%= ethvalue.price_usd%></strong></p>
+            <p><strong>Price (INR) : &#x20b9; <span id="ethvalueinr"><%= ethvalue.price_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
+            <p><strong>Price (USD) : $ <span id="ethvalueusd"><%= ethvalue.price_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
 
 
 
               <% if(ethvalue.percent_change_1h > 0){%>
-                  <p>Percentage Change (1h) : <span class="tag is-success">+<%= ethvalue.percent_change_1h%> %</span></p>
+                  <p>Percentage Change (1h) : <span id="eth1hchangegreen" class="tag is-success">+<%= ethvalue.percent_change_1h%> %</span></p>
               <%}%>
               <% if(ethvalue.percent_change_1h < 0){%>
-                   <p>Percentage Change (1h) : <span class="tag is-danger"><%= ethvalue.percent_change_1h%> %</span></p>
+                   <p>Percentage Change (1h) : <span id="eth1hchangered" class="tag is-danger"><%= ethvalue.percent_change_1h%> %</span></p>
 
               <% }%>
 
 
             <% if(ethvalue.percent_change_24h > 0){%>
-                <p>Percentage Change (24h) : <span class="tag is-success">+<%= ethvalue.percent_change_24h%> %</span></p>
+                <p>Percentage Change (24h) : <span id="eth24hchangegreen" class="tag is-success">+<%= ethvalue.percent_change_24h%> %</span></p>
             <%}%>
             <% if(ethvalue.percent_change_24h < 0){%>
-                 <p>Percentage Change (24h) : <span class="tag is-danger"><%= ethvalue.percent_change_24h%> %</span></p>
+                 <p>Percentage Change (24h) : <span id="eth24hchangered" class="tag is-danger"><%= ethvalue.percent_change_24h%> %</span></p>
 
             <% }%>
 
-            <p>Available Supply : <%=ethvalue.available_supply%> ETH </p>
-            <p>Total Supply : <%=ethvalue.total_supply%> ETH </p>
-            <p>Market Cap (INR) : &#x20b9; <%=ethvalue.market_cap_inr%> </p>
-            <p>24h Volume (INR) : &#x20b9; <%=onedayEth%> </p>
-            <p>Last Updated : <%=ethTimeStamp%> IST </p>
+            <p>Available Supply : <span id="ethavail"><%=ethvalue.available_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> ETH </p>
+            <p>Total Supply : <span id="ethtotal"><%=ethvalue.total_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> ETH </p>
+            <p>Market Cap (INR) : &#x20b9; <span id="ethmax"><%=ethvalue.market_cap_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>24h Volume (INR) : &#x20b9; <span id="ethday"><%=onedayEth.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>Last Updated : <span id="ethtime"><%=ethTimeStamp%></span> IST </p>
 
         </div>
     </div>
     <div class="tile is-parent">
         <div class="tile is-child notification is-ripple">
             <p class="title">Ripple(Network Price)</p>
-            <p><strong>Price (INR) : &#x20b9; <%= xrpvalue.price_inr%></strong></p>
-            <p><strong>Price (USD) : $ <%= xrpvalue.price_usd%></strong></p>
+            <p><strong>Price (INR) : &#x20b9; <span id="xrpvalueinr"><%= xrpvalue.price_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
+            <p><strong>Price (USD) : $ <span id="xrpvalueusd"><%= xrpvalue.price_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
 
 
 
               <% if(xrpvalue.percent_change_1h > 0){%>
-                  <p>Percentage Change (1h) : <span class="tag is-success">+<%= xrpvalue.percent_change_1h%> %</span></p>
+                  <p>Percentage Change (1h) : <span id="xrp1hchangegreen" class="tag is-success">+<%= xrpvalue.percent_change_1h%> %</span></p>
               <%}%>
               <% if(xrpvalue.percent_change_1h < 0){%>
-                   <p>Percentage Change (1h) : <span class="tag is-danger"><%= xrpvalue.percent_change_1h%> %</span></p>
+                   <p>Percentage Change (1h) : <span id="xrp1hchangered" class="tag is-danger"><%= xrpvalue.percent_change_1h%> %</span></p>
 
               <% }%>
 
 
             <% if(xrpvalue.percent_change_24h > 0){%>
-                <p>Percentage Change (24h) : <span class="tag is-success">+<%= xrpvalue.percent_change_24h%> %</span></p>
+                <p>Percentage Change (24h) : <span id="xrp24hchangegreen" class="tag is-success">+<%= xrpvalue.percent_change_24h%> %</span></p>
             <%}%>
             <% if(xrpvalue.percent_change_24h < 0){%>
-                 <p>Percentage Change (24h) : <span class="tag is-danger"><%= xrpvalue.percent_change_24h%> %</span></p>
+                 <p>Percentage Change (24h) : <span id="xrp24hchangered" class="tag is-danger"><%= xrpvalue.percent_change_24h%> %</span></p>
 
             <% }%>
 
-            <p>Available Supply : <%=xrpvalue.available_supply%> XRP </p>
-            <p>Total Supply : <%=xrpvalue.total_supply%> XRP </p>
-            <p>Maximum Supply : <%=xrpvalue.max_supply%> XRP </p>
-            <p>Market Cap (INR) : &#x20b9; <%=xrpvalue.market_cap_inr%> </p>
-            <p>24h Volume (INR) : &#x20b9; <%=onedayXrp%> </p>
-            <p>Last Updated : <%=xrpTimeStamp%> IST </p>
+            <p>Available Supply : <span id="xrpavail"><%=xrpvalue.available_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
+            <p>Total Supply : <span id="xrptotal"><%=xrpvalue.total_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
+            <p>Maximum Supply : <span id="xrpmax"><%=xrpvalue.max_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
+            <p>Market Cap (INR) : &#x20b9; <span id="xrpcap"><%=xrpvalue.market_cap_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>24h Volume (INR) : &#x20b9; <span id="xrpday"><%=onedayXrp.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>Last Updated : <span id="xrptime"><%=xrpTimeStamp%></span> IST </p>
 
             <hr>
             <p class="title">BtcxIndia Price</p>
-              <p> <strong> Price : &#x20b9; <%= btcxvalue.ask%></strong></p>
-              <p>Last Traded Price : &#x20b9; <%=btcxvalue.last_traded_price%> </p>
-              <p>Total Volume (24h) : <%=btcxvalue.total_volume_24h%> XRP</p>
+              <p> <strong> Price : &#x20b9;
+                <% if(btcxvalue.ask == null){%>
+                  <span id="btcxvalueinr"> <span class="help"></span> </span>
+                <% }%>
+
+                <% if(btcxvalue.ask != null){%>
+                <span id="btcxvalueinr"><%= btcxvalue.ask%></span></strong>
+                <% }%>
+
+              </p>
+              <p>Last Traded Price : &#x20b9; <span id="btcxtrade"><%=btcxvalue.last_traded_price%></span> </p>
+              <p>Total Volume (24h) : <span id="btcxvol"><%=btcxvalue.total_volume_24h%></span> XRP</p>
             </div>
     </div>
 </div>
@@ -193,6 +204,21 @@
         </div>
     </div>
 </footer>
-
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+function fetchdata(){
+  $.ajax({
+  url: 'updateprice',
+  type: 'post',
+  success: function(response){
+        updateprice(response);
+  }
+ });
+}
+
+$(document).ready(function(){
+ setInterval(fetchdata,5000);
+});
+</script>
 </html>
