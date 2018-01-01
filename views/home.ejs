@@ -59,35 +59,66 @@
         <div class="tile is-child notification is-bitcoin ">
             <p class="title">Bitcoin</p>
 
-            <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <%= Number(btcvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
-            <p><strong>Price (USD) : $<span id="btcvalueusd"><%= Number(btcvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
+            <% if(btcvalue.price_inr == null){%>
+              <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <span/></strong></p>
+              <p><strong>Price (USD) : $<span id="btcvalueusd"><span/></strong></p>
 
 
 
-              <% if(btcvalue.percent_change_1h > 0){%>
-                  <p>Percentage Change (1h) : <span id="btc1hchangegreen" class="tag is-success">+<%= btcvalue.percent_change_1h%> %</span></p>
-              <%}%>
-              <% if(btcvalue.percent_change_1h < 0){%>
-                   <p>Percentage Change (1h) : <span id="btc1hchangered" class="tag is-danger"><%= btcvalue.percent_change_1h%> %</span></p>
+                    <p>Percentage Change (1h) : <span id="btc1hchangegreen" class="tag is-success"></span></p>
+                     <p>Percentage Change (1h) : <span id="btc1hchangered" class="tag is-danger"></span></p>
+
+
+
+                  <p>Percentage Change (24h) : <span id="btc24hchangegreen" class="tag is-success"></span></p>
+                   <p>Percentage Change (24h) : <span id="btc24hchangered" class="tag is-danger"></span></p>
+
+
+              <p>Available Supply :<span id="btcavail"></span> BTC </p>
+              <p>Total Supply : <span id="btctotal"></span> BTC </p>
+              <p>Maximum Supply : <span id="btcmax"></span> BTC </p>
+              <p>Market Cap (INR) : &#x20b9; <span id="btccap"></span> </p>
+              <p>24h Volume (INR) : &#x20b9; <span id="btcday"></span> </p>
+              <p>Last Updated : <span id="btctime"></span> IST </p>
 
               <% }%>
 
 
-            <% if(btcvalue.percent_change_24h > 0){%>
-                <p>Percentage Change (24h) : <span id="btc24hchangegreen" class="tag is-success">+<%= btcvalue.percent_change_24h%> %</span></p>
-            <%}%>
-            <% if(btcvalue.percent_change_24h < 0){%>
-                 <p>Percentage Change (24h) : <span id="btc24hchangered" class="tag is-danger"><%= btcvalue.percent_change_24h%> %</span></p>
+
+
+            <% if(btcvalue.price_inr != null){%>
+
+
+                <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <%= Number(btcvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
+                <p><strong>Price (USD) : $<span id="btcvalueusd"><%= Number(btcvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
+
+
+
+                  <% if(btcvalue.percent_change_1h > 0){%>
+                      <p>Percentage Change (1h) : <span id="btc1hchangegreen" class="tag is-success">+<%= btcvalue.percent_change_1h%> %</span></p>
+                  <%}%>
+                  <% if(btcvalue.percent_change_1h < 0){%>
+                       <p>Percentage Change (1h) : <span id="btc1hchangered" class="tag is-danger"><%= btcvalue.percent_change_1h%> %</span></p>
+
+                  <% }%>
+
+
+                <% if(btcvalue.percent_change_24h > 0){%>
+                    <p>Percentage Change (24h) : <span id="btc24hchangegreen" class="tag is-success">+<%= btcvalue.percent_change_24h%> %</span></p>
+                <%}%>
+                <% if(btcvalue.percent_change_24h < 0){%>
+                     <p>Percentage Change (24h) : <span id="btc24hchangered" class="tag is-danger"><%= btcvalue.percent_change_24h%> %</span></p>
+
+                <% }%>
+
+                <p>Available Supply :<span id="btcavail"><%= Number(btcvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+                <p>Total Supply : <span id="btctotal"><%= Number(btcvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+                <p>Maximum Supply : <span id="btcmax"><%= Number(btcvalue.max_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+                <p>Market Cap (INR) : &#x20b9; <span id="btccap"><%= Number(btcvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                <p>24h Volume (INR) : &#x20b9; <span id="btcday"><%= Number(onedayBtc).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                <p>Last Updated : <span id="btctime"><%=btcTimeStamp%></span> IST </p>
 
             <% }%>
-
-            <p>Available Supply :<span id="btcavail"><%= Number(btcvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
-            <p>Total Supply : <span id="btctotal"><%= Number(btcvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
-            <p>Maximum Supply : <span id="btcmax"><%= Number(btcvalue.max_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
-            <p>Market Cap (INR) : &#x20b9; <span id="btccap"><%= Number(btcvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-            <p>24h Volume (INR) : &#x20b9; <span id="btcday"><%= Number(onedayBtc).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-            <p>Last Updated : <span id="btctime"><%=btcTimeStamp%></span> IST </p>
-
 
 
         </div>
