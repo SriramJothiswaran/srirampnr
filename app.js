@@ -95,7 +95,6 @@ function getStatus(req, res, next){
 }
 
 app.get("/", getStatus,function(req, res){
-  console.log(btcxvalue.status);
    res.render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp,btcxvalue:btcxvalue});
 
 });
