@@ -108,8 +108,5 @@ app.post('/updateprice',getStatus, function(req,res){
 });
 
 
-io.sockets.on('connection', function (socket) {
-   console.log('hello');
 
-});
 console.log("Listening on port " + port);
