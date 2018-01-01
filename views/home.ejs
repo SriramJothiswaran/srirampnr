@@ -59,8 +59,8 @@
         <div class="tile is-child notification is-bitcoin ">
             <p class="title">Bitcoin</p>
 
-            <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <%= btcvalue.price_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
-            <p><strong>Price (USD) : $<span id="btcvalueusd"><%= btcvalue.price_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
+            <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <%= Number(btcvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
+            <p><strong>Price (USD) : $<span id="btcvalueusd"><%= Number(btcvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
 
 
 
@@ -81,11 +81,11 @@
 
             <% }%>
 
-            <p>Available Supply :<span id="btcavail"><%=btcvalue.available_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
-            <p>Total Supply : <span id="btctotal"><%=btcvalue.total_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
-            <p>Maximum Supply : <span id="btcmax"><%=btcvalue.max_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
-            <p>Market Cap (INR) : &#x20b9; <span id="btccap"><%=btcvalue.market_cap_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-            <p>24h Volume (INR) : &#x20b9; <span id="btcday"><%=onedayBtc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>Available Supply :<span id="btcavail"><%= Number(btcvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+            <p>Total Supply : <span id="btctotal"><%= Number(btcvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+            <p>Maximum Supply : <span id="btcmax"><%= Number(btcvalue.max_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+            <p>Market Cap (INR) : &#x20b9; <span id="btccap"><%= Number(btcvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>24h Volume (INR) : &#x20b9; <span id="btcday"><%= Number(onedayBtc).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
             <p>Last Updated : <span id="btctime"><%=btcTimeStamp%></span> IST </p>
 
 
@@ -93,8 +93,8 @@
         </div>
         <div class="tile is-child box">
             <p class="title">Ethereum</p>
-            <p><strong>Price (INR) : &#x20b9; <span id="ethvalueinr"><%= ethvalue.price_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
-            <p><strong>Price (USD) : $ <span id="ethvalueusd"><%= ethvalue.price_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
+            <p><strong>Price (INR) : &#x20b9; <span id="ethvalueinr"><%= Number(ethvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
+            <p><strong>Price (USD) : $ <span id="ethvalueusd"><%= Number(ethvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
 
 
 
@@ -115,10 +115,10 @@
 
             <% }%>
 
-            <p>Available Supply : <span id="ethavail"><%=ethvalue.available_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> ETH </p>
-            <p>Total Supply : <span id="ethtotal"><%=ethvalue.total_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> ETH </p>
-            <p>Market Cap (INR) : &#x20b9; <span id="ethmax"><%=ethvalue.market_cap_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-            <p>24h Volume (INR) : &#x20b9; <span id="ethday"><%=onedayEth.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>Available Supply : <span id="ethavail"><%=Number(ethvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> ETH </p>
+            <p>Total Supply : <span id="ethtotal"><%=Number(ethvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> ETH </p>
+            <p>Market Cap (INR) : &#x20b9; <span id="ethmax"><%=Number(ethvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>24h Volume (INR) : &#x20b9; <span id="ethday"><%=Number(onedayEth).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
             <p>Last Updated : <span id="ethtime"><%=ethTimeStamp%></span> IST </p>
 
         </div>
@@ -126,8 +126,8 @@
     <div class="tile is-parent">
         <div class="tile is-child notification is-ripple">
             <p class="title">Ripple(Network Price)</p>
-            <p><strong>Price (INR) : &#x20b9; <span id="xrpvalueinr"><%= xrpvalue.price_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
-            <p><strong>Price (USD) : $ <span id="xrpvalueusd"><%= xrpvalue.price_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
+            <p><strong>Price (INR) : &#x20b9; <span id="xrpvalueinr"><%= Number(xrpvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
+            <p><strong>Price (USD) : $ <span id="xrpvalueusd"><%= Number(xrpvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
 
 
 
@@ -148,11 +148,11 @@
 
             <% }%>
 
-            <p>Available Supply : <span id="xrpavail"><%=xrpvalue.available_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
-            <p>Total Supply : <span id="xrptotal"><%=xrpvalue.total_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
-            <p>Maximum Supply : <span id="xrpmax"><%=xrpvalue.max_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
-            <p>Market Cap (INR) : &#x20b9; <span id="xrpcap"><%=xrpvalue.market_cap_inr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-            <p>24h Volume (INR) : &#x20b9; <span id="xrpday"><%=onedayXrp.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>Available Supply : <span id="xrpavail"><%=Number(xrpvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
+            <p>Total Supply : <span id="xrptotal"><%=Number(xrpvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
+            <p>Maximum Supply : <span id="xrpmax"><%=Number(xrpvalue.max_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
+            <p>Market Cap (INR) : &#x20b9; <span id="xrpcap"><%=Number(xrpvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+            <p>24h Volume (INR) : &#x20b9; <span id="xrpday"><%=Number(onedayXrp).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
             <p>Last Updated : <span id="xrptime"><%=xrpTimeStamp%></span> IST </p>
 
             <hr>
@@ -166,9 +166,9 @@
                 <% }%>
 
                 <% if(btcxvalue.ask != null){%>
-                <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"><%= btcxvalue.ask%></span></strong>
-                <p>Last Traded Price : &#x20b9; <span id="btcxtrade"><%=btcxvalue.last_traded_price%></span> </p>
-                <p>Total Volume (24h) : <span id="btcxvol"><%=btcxvalue.total_volume_24h%></span> XRP</p>
+                <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"><%= Number(btcxvalue.ask).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong>
+                <p>Last Traded Price : &#x20b9; <span id="btcxtrade"><%=Number(btcxvalue.last_traded_price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                <p>Total Volume (24h) : <span id="btcxvol"><%=Number(btcxvalue.total_volume_24h).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP</p>
                 <% }%>
 
               </p>
@@ -216,7 +216,8 @@ function fetchdata(){
   url: 'updateprice',
   type: 'post',
   success: function(response){
-        updateprice(response);
+    if(response!=null){updateprice(response);}
+
   }
  });
 }
