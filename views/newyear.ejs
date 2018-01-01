@@ -1328,11 +1328,14 @@
     <script  src="/js/year.js"></script>
 
     <script type="text/javascript">
-    document.body.addEventListener('click', fn, true);
     function fn(){
       var audio = new Audio('/newyear.mp3');
       audio.play();
+      removeEventListener('click', fn);
+
     }
+    document.body.addEventListener('click', fn, true);
+
 
     </script>
 
