@@ -1,5 +1,4 @@
 function updateprice(response){
-  console.log('hii');
   document.getElementById('btcvalueinr').innerHTML = response.btcvalue.price_inr;
   document.getElementById('btcvalueusd').innerHTML = response.btcvalue.price_usd;
   if(response.btcvalue.percent_change_1h > 0){
