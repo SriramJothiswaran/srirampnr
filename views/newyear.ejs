@@ -1328,14 +1328,13 @@
     <script  src="/js/year.js"></script>
 
     <script type="text/javascript">
+    var check = true;
+    document.body.addEventListener('click', fn, true);
     function fn(){
-      var audio = new Audio('/newyear.mp3');
-      audio.play();
-      removeEventListener('click', fn);
+      if(check){var audio = new Audio('/newyear.mp3');   audio.play(); check = false;}
+
 
     }
-    document.body.addEventListener('click', fn, true);
-
 
     </script>
 
