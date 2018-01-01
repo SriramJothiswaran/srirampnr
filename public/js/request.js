@@ -64,7 +64,7 @@ if(response.xrpvalue.percent_change_1h > 0){
 }
 if(response.xrpvalue.percent_change_24h > 0){
   if(document.getElementById('xrp24hchangered') != null){    document.getElementById('btc24hchangered').style.visibility = 'hidden';}
-  document.getElementById('xrp24hchangegreen').innerHTML = '+' + xrpvalue.percent_change_24h + ' %';
+  document.getElementById('xrp24hchangegreen').innerHTML = '+' + response.xrpvalue.percent_change_24h + ' %';
 }else{
   if(document.getElementById('xrp24hchangegreen') != null){    document.getElementById('btc24hchangegreen').style.visibility = 'hidden';}
   document.getElementById('xrp24hchangered').innerHTML = response.xrpvalue.percent_change_24h + ' %';
