@@ -12,8 +12,8 @@ const bot = new TelegramBot(token, {polling: true});
 
 
 
-// var port = process.env.PORT;
-var port = 5000;
+var port = process.env.PORT;
+// var port = 5000;
 
 var io = require('socket.io').listen(app.listen(port));
 
@@ -105,7 +105,7 @@ function getStatus(req, res, next){
 
 app.get("/", getStatus,function(req, res){
 
-   res.status(200).render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp,btcxvalue:btcxvalue});
+   res.render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp,btcxvalue:btcxvalue});
 
 });
 app.get("/gift",function(req, res){
