@@ -5,10 +5,15 @@ const request = require("request");
 var moment = require('moment');
 moment().format();
 var cloudscraper = require('cloudscraper');
+const TelegramBot = require('node-telegram-bot-api');
+const token = '543856122:AAHWgF_5OvoTJ17T2nQY-f8FR_NSNDb4ye0';
+const bot = new TelegramBot(token, {polling: true});
 
 
-var port = process.env.PORT;
-// var port = 5000;
+
+
+// var port = process.env.PORT;
+var port = 5000;
 
 var io = require('socket.io').listen(app.listen(port));
 
@@ -99,7 +104,8 @@ function getStatus(req, res, next){
 }
 
 app.get("/", getStatus,function(req, res){
-   res.render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp,btcxvalue:btcxvalue});
+
+   res.status(200).render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp,btcxvalue:btcxvalue});
 
 });
 app.get("/gift",function(req, res){
@@ -111,6 +117,18 @@ app.post('/updateprice',getStatus, function(req,res){
     res.send({btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp,btcxvalue:btcxvalue});
 });
 
+bot.on('message', (msg) => {
+console.log('hi');
+var Hi = "hi";
+if (msg.text.toString().toLowerCase().indexOf(Hi) === 0) {
+bot.sendMessage(msg.chat.id,"Hello dear user");
+}
 
+});
+
+bot.on('polling_error', (error) => {
+
+  console.log(error.code);  // => 'EFATAL'
+});
 
 console.log("Listening on port " + port);

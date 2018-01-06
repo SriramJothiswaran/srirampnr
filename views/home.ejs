@@ -1,67 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Live Cryptocurreny Price</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
-    <link rel="stylesheet" href="/css/main.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Cryptocurreny Price</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/main.css">
 
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
 
-    <link rel="shortcut icon" type="image/png" href="/rupee-128.png"/>
+  <link rel="shortcut icon" type="image/png" href="/rupee-128.png" />
 
 </head>
+
 <body>
   <a href="https://github.com/SriramJothiswaran"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
-<section class="hero is-primary is-bold">
+  <section class="hero is-primary is-bold">
     <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
+      <div class="container">
+        <h1 class="title">
                 <strong>Live</strong> Cryptocurrency Price <small>(&#946;eta)</small>
             </h1>
 
-            <h2 class="subtitle">
+        <h2 class="subtitle">
                 BTC,XRP,ETH <br>
                 <a class="button is-primary is-inverted is-outlined" id="subscribe">Subscribe for price change alerts</a>
 
             </h2>
-        </div>
+      </div>
     </div>
-</section>
-<div class="Marquee">
-  <marquee>Live price reloading has been added. Stay on this page, content loads automatically when change occurs. Let's Blockchain.  </marquee>
-</div>
-<div class="tile is-ancestor">
+  </section>
+  <div class="Marquee">
+    <marquee>Telegram bot for getting live ripple price is under build. Let's Blockchain. </marquee>
+  </div>
+  <div class="tile is-ancestor">
     <div class="tile is-4 is-vertical is-parent">
-        <div class="tile is-child notification is-bitcoin ">
-            <p class="title">Bitcoin</p>
+      <div class="tile is-child notification is-bitcoin ">
+        <p class="title">Bitcoin</p>
 
-            <% if(btcvalue == null){%>
-              <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <span/></strong></p>
-              <p><strong>Price (USD) : $<span id="btcvalueusd"><span/></strong></p>
-
-
-
-                    <p>Percentage Change (1h) : <span id="btc1hchangegreen" class="tag is-success"></span></p>
-                     <p>Percentage Change (1h) : <span id="btc1hchangered" class="tag is-danger"></span></p>
+        <% if(btcvalue == null){%>
+          <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <span/></strong></p>
+          <p><strong>Price (USD) : $<span id="btcvalueusd"><span/></strong></p>
 
 
 
-                  <p>Percentage Change (24h) : <span id="btc24hchangegreen" class="tag is-success"></span></p>
-                   <p>Percentage Change (24h) : <span id="btc24hchangered" class="tag is-danger"></span></p>
+          <p>Percentage Change (1h) : <span id="btc1hchangegreen" class="tag is-success"></span></p>
+          <p>Percentage Change (1h) : <span id="btc1hchangered" class="tag is-danger"></span></p>
 
 
-              <p>Available Supply :<span id="btcavail"></span> BTC </p>
-              <p>Total Supply : <span id="btctotal"></span> BTC </p>
-              <p>Maximum Supply : <span id="btcmax"></span> BTC </p>
-              <p>Market Cap (INR) : &#x20b9; <span id="btccap"></span> </p>
-              <p>24h Volume (INR) : &#x20b9; <span id="btcday"></span> </p>
-              <p>Last Updated : <span id="btctime"></span> IST </p>
 
-              <% }%>
+          <p>Percentage Change (24h) : <span id="btc24hchangegreen" class="tag is-success"></span></p>
+          <p>Percentage Change (24h) : <span id="btc24hchangered" class="tag is-danger"></span></p>
+
+
+          <p>Available Supply :<span id="btcavail"></span> BTC </p>
+          <p>Total Supply : <span id="btctotal"></span> BTC </p>
+          <p>Maximum Supply : <span id="btcmax"></span> BTC </p>
+          <p>Market Cap (INR) : &#x20b9; <span id="btccap"></span> </p>
+          <p>24h Volume (INR) : &#x20b9; <span id="btcday"></span> </p>
+          <p>Last Updated : <span id="btctime"></span> IST </p>
+
+          <% }%>
 
 
 
@@ -69,316 +71,328 @@
             <% if(btcvalue != null){%>
 
 
-                <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <%= Number(btcvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
-                <p><strong>Price (USD) : $<span id="btcvalueusd"><%= Number(btcvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
+              <p><strong>Price (INR) : &#x20b9;<span id="btcvalueinr"> <%= Number(btcvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
+              <p><strong>Price (USD) : $<span id="btcvalueusd"><%= Number(btcvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%><span/></strong></p>
 
 
 
-                  <% if(btcvalue.percent_change_1h > 0){%>
-                      <p>Percentage Change (1h) : <span id="btc1hchangegreen" class="tag is-success">+<%= btcvalue.percent_change_1h%> %</span></p>
-                  <%}%>
-                  <% if(btcvalue.percent_change_1h < 0){%>
-                       <p>Percentage Change (1h) : <span id="btc1hchangered" class="tag is-danger"><%= btcvalue.percent_change_1h%> %</span></p>
-
-                  <% }%>
-
-
-                <% if(btcvalue.percent_change_24h > 0){%>
-                    <p>Percentage Change (24h) : <span id="btc24hchangegreen" class="tag is-success">+<%= btcvalue.percent_change_24h%> %</span></p>
+              <% if(btcvalue.percent_change_1h > 0){%>
+                <p>Percentage Change (1h) : <span id="btc1hchangegreen" class="tag is-success">+<%= btcvalue.percent_change_1h%> %</span></p>
                 <%}%>
-                <% if(btcvalue.percent_change_24h < 0){%>
-                     <p>Percentage Change (24h) : <span id="btc24hchangered" class="tag is-danger"><%= btcvalue.percent_change_24h%> %</span></p>
+                  <% if(btcvalue.percent_change_1h < 0){%>
+                    <p>Percentage Change (1h) : <span id="btc1hchangered" class="tag is-danger"><%= btcvalue.percent_change_1h%> %</span></p>
+
+                    <% }%>
+
+
+                      <% if(btcvalue.percent_change_24h > 0){%>
+                        <p>Percentage Change (24h) : <span id="btc24hchangegreen" class="tag is-success">+<%= btcvalue.percent_change_24h%> %</span></p>
+                        <%}%>
+                          <% if(btcvalue.percent_change_24h < 0){%>
+                            <p>Percentage Change (24h) : <span id="btc24hchangered" class="tag is-danger"><%= btcvalue.percent_change_24h%> %</span></p>
+
+                            <% }%>
+
+                              <p>Available Supply :<span id="btcavail"><%= Number(btcvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+                              <p>Total Supply : <span id="btctotal"><%= Number(btcvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+                              <p>Maximum Supply : <span id="btcmax"><%= Number(btcvalue.max_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
+                              <p>Market Cap (INR) : &#x20b9; <span id="btccap"><%= Number(btcvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                              <p>24h Volume (INR) : &#x20b9; <span id="btcday"><%= Number(onedayBtc).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                              <p>Last Updated : <span id="btctime"><%=btcTimeStamp%></span> IST </p>
+
+                              <% }%>
+
+
+      </div>
+      <div class="tile is-child box">
+        <p class="title">Ethereum</p>
+
+        <% if(ethvalue == null){%>
+
+          <p><strong>Price (INR) : &#x20b9; <span id="ethvalueinr"></span></strong></p>
+          <p><strong>Price (USD) : $ <span id="ethvalueusd"></span></strong></p>
+
+
+
+          <% if(ethvalue.percent_change_1h > 0){%>
+            <p>Percentage Change (1h) : <span id="eth1hchangegreen" class="tag is-success"></span></p>
+            <%}%>
+              <% if(ethvalue.percent_change_1h < 0){%>
+                <p>Percentage Change (1h) : <span id="eth1hchangered" class="tag is-danger"></span></p>
 
                 <% }%>
 
-                <p>Available Supply :<span id="btcavail"><%= Number(btcvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
-                <p>Total Supply : <span id="btctotal"><%= Number(btcvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
-                <p>Maximum Supply : <span id="btcmax"><%= Number(btcvalue.max_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> BTC </p>
-                <p>Market Cap (INR) : &#x20b9; <span id="btccap"><%= Number(btcvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-                <p>24h Volume (INR) : &#x20b9; <span id="btcday"><%= Number(onedayBtc).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-                <p>Last Updated : <span id="btctime"><%=btcTimeStamp%></span> IST </p>
-
-            <% }%>
-
-
-        </div>
-        <div class="tile is-child box">
-            <p class="title">Ethereum</p>
-
-            <% if(ethvalue == null){%>
-
-                  <p><strong>Price (INR) : &#x20b9; <span id="ethvalueinr"></span></strong></p>
-                  <p><strong>Price (USD) : $ <span id="ethvalueusd"></span></strong></p>
-
-
-
-                    <% if(ethvalue.percent_change_1h > 0){%>
-                        <p>Percentage Change (1h) : <span id="eth1hchangegreen" class="tag is-success"></span></p>
-                    <%}%>
-                    <% if(ethvalue.percent_change_1h < 0){%>
-                         <p>Percentage Change (1h) : <span id="eth1hchangered" class="tag is-danger"></span></p>
-
-                    <% }%>
-
 
                   <% if(ethvalue.percent_change_24h > 0){%>
-                      <p>Percentage Change (24h) : <span id="eth24hchangegreen" class="tag is-success"></span></p>
-                  <%}%>
-                  <% if(ethvalue.percent_change_24h < 0){%>
-                       <p>Percentage Change (24h) : <span id="eth24hchangered" class="tag is-danger"></span></p>
-
-                  <% }%>
-
-                  <p>Available Supply : <span id="ethavail"></span> ETH </p>
-                  <p>Total Supply : <span id="ethtotal"></span> ETH </p>
-                  <p>Market Cap (INR) : &#x20b9; <span id="ethmax"></span> </p>
-                  <p>24h Volume (INR) : &#x20b9; <span id="ethday"></span> </p>
-                  <p>Last Updated : <span id="ethtime"></span> IST </p>
-            <% }%>
-
-
-            <% if(ethvalue != null){%>
-
-                  <p><strong>Price (INR) : &#x20b9; <span id="ethvalueinr"><%= Number(ethvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
-                  <p><strong>Price (USD) : $ <span id="ethvalueusd"><%= Number(ethvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
-
-
-
-                    <% if(ethvalue.percent_change_1h > 0){%>
-                        <p>Percentage Change (1h) : <span id="eth1hchangegreen" class="tag is-success">+<%= ethvalue.percent_change_1h%> %</span></p>
+                    <p>Percentage Change (24h) : <span id="eth24hchangegreen" class="tag is-success"></span></p>
                     <%}%>
-                    <% if(ethvalue.percent_change_1h < 0){%>
-                         <p>Percentage Change (1h) : <span id="eth1hchangered" class="tag is-danger"><%= ethvalue.percent_change_1h%> %</span></p>
+                      <% if(ethvalue.percent_change_24h < 0){%>
+                        <p>Percentage Change (24h) : <span id="eth24hchangered" class="tag is-danger"></span></p>
 
-                    <% }%>
+                        <% }%>
+
+                          <p>Available Supply : <span id="ethavail"></span> ETH </p>
+                          <p>Total Supply : <span id="ethtotal"></span> ETH </p>
+                          <p>Market Cap (INR) : &#x20b9; <span id="ethmax"></span> </p>
+                          <p>24h Volume (INR) : &#x20b9; <span id="ethday"></span> </p>
+                          <p>Last Updated : <span id="ethtime"></span> IST </p>
+                          <% }%>
 
 
-                  <% if(ethvalue.percent_change_24h > 0){%>
-                      <p>Percentage Change (24h) : <span id="eth24hchangegreen" class="tag is-success">+<%= ethvalue.percent_change_24h%> %</span></p>
-                  <%}%>
-                  <% if(ethvalue.percent_change_24h < 0){%>
-                       <p>Percentage Change (24h) : <span id="eth24hchangered" class="tag is-danger"><%= ethvalue.percent_change_24h%> %</span></p>
+                            <% if(ethvalue != null){%>
 
-                  <% }%>
+                              <p><strong>Price (INR) : &#x20b9; <span id="ethvalueinr"><%= Number(ethvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
+                              <p><strong>Price (USD) : $ <span id="ethvalueusd"><%= Number(ethvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
 
-                  <p>Available Supply : <span id="ethavail"><%=Number(ethvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> ETH </p>
-                  <p>Total Supply : <span id="ethtotal"><%=Number(ethvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> ETH </p>
-                  <p>Market Cap (INR) : &#x20b9; <span id="ethmax"><%=Number(ethvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-                  <p>24h Volume (INR) : &#x20b9; <span id="ethday"><%=Number(onedayEth).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-                  <p>Last Updated : <span id="ethtime"><%=ethTimeStamp%></span> IST </p>
-            <% }%>
 
-        </div>
+
+                              <% if(ethvalue.percent_change_1h > 0){%>
+                                <p>Percentage Change (1h) : <span id="eth1hchangegreen" class="tag is-success">+<%= ethvalue.percent_change_1h%> %</span></p>
+                                <%}%>
+                                  <% if(ethvalue.percent_change_1h < 0){%>
+                                    <p>Percentage Change (1h) : <span id="eth1hchangered" class="tag is-danger"><%= ethvalue.percent_change_1h%> %</span></p>
+
+                                    <% }%>
+
+
+                                      <% if(ethvalue.percent_change_24h > 0){%>
+                                        <p>Percentage Change (24h) : <span id="eth24hchangegreen" class="tag is-success">+<%= ethvalue.percent_change_24h%> %</span></p>
+                                        <%}%>
+                                          <% if(ethvalue.percent_change_24h < 0){%>
+                                            <p>Percentage Change (24h) : <span id="eth24hchangered" class="tag is-danger"><%= ethvalue.percent_change_24h%> %</span></p>
+
+                                            <% }%>
+
+                                              <p>Available Supply : <span id="ethavail"><%=Number(ethvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> ETH </p>
+                                              <p>Total Supply : <span id="ethtotal"><%=Number(ethvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> ETH </p>
+                                              <p>Market Cap (INR) : &#x20b9; <span id="ethmax"><%=Number(ethvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                                              <p>24h Volume (INR) : &#x20b9; <span id="ethday"><%=Number(onedayEth).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                                              <p>Last Updated : <span id="ethtime"><%=ethTimeStamp%></span> IST </p>
+                                              <% }%>
+
+      </div>
     </div>
     <div class="tile is-parent">
-        <div class="tile is-child notification is-ripple">
-            <p class="title">Ripple(Network Price)</p>
+      <div class="tile is-child notification is-ripple">
+        <p class="title">Ripple(Network Price)</p>
 
 
-            <% if(xrpvalue == null){%>
-                    <p><strong>Price (INR) : &#x20b9; <span id="xrpvalueinr"></span></strong></p>
-                    <p><strong>Price (USD) : $ <span id="xrpvalueusd"></span></strong></p>
-
-
-
-                      <% if(xrpvalue.percent_change_1h > 0){%>
-                          <p>Percentage Change (1h) : <span id="xrp1hchangegreen" class="tag is-success"></span></p>
-                      <%}%>
-                      <% if(xrpvalue.percent_change_1h < 0){%>
-                           <p>Percentage Change (1h) : <span id="xrp1hchangered" class="tag is-danger"></span></p>
-
-                      <% }%>
-
-
-                    <% if(xrpvalue.percent_change_24h > 0){%>
-                        <p>Percentage Change (24h) : <span id="xrp24hchangegreen" class="tag is-success"></span></p>
-                    <%}%>
-                    <% if(xrpvalue.percent_change_24h < 0){%>
-                         <p>Percentage Change (24h) : <span id="xrp24hchangered" class="tag is-danger"></span></p>
-
-                    <% }%>
-
-                    <p>Available Supply : <span id="xrpavail"></span> XRP </p>
-                    <p>Total Supply : <span id="xrptotal"></span> XRP </p>
-                    <p>Maximum Supply : <span id="xrpmax"></span> XRP </p>
-                    <p>Market Cap (INR) : &#x20b9; <span id="xrpcap"></span> </p>
-                    <p>24h Volume (INR) : &#x20b9; <span id="xrpday"></span> </p>
-                    <p>Last Updated : <span id="xrptime"></span> IST </p>
-
-           <% }%>
+        <% if(xrpvalue == null){%>
+          <p><strong>Price (INR) : &#x20b9; <span id="xrpvalueinr"></span></strong></p>
+          <p><strong>Price (USD) : $ <span id="xrpvalueusd"></span></strong></p>
 
 
 
-            <% if(xrpvalue != null){%>
-                    <p><strong>Price (INR) : &#x20b9; <span id="xrpvalueinr"><%= Number(xrpvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
-                    <p><strong>Price (USD) : $ <span id="xrpvalueusd"><%= Number(xrpvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
+          <% if(xrpvalue.percent_change_1h > 0){%>
+            <p>Percentage Change (1h) : <span id="xrp1hchangegreen" class="tag is-success"></span></p>
+            <%}%>
+              <% if(xrpvalue.percent_change_1h < 0){%>
+                <p>Percentage Change (1h) : <span id="xrp1hchangered" class="tag is-danger"></span></p>
 
-
-
-                      <% if(xrpvalue.percent_change_1h > 0){%>
-                          <p>Percentage Change (1h) : <span id="xrp1hchangegreen" class="tag is-success">+<%= xrpvalue.percent_change_1h%> %</span></p>
-                      <%}%>
-                      <% if(xrpvalue.percent_change_1h < 0){%>
-                           <p>Percentage Change (1h) : <span id="xrp1hchangered" class="tag is-danger"><%= xrpvalue.percent_change_1h%> %</span></p>
-
-                      <% }%>
-
-
-                    <% if(xrpvalue.percent_change_24h > 0){%>
-                        <p>Percentage Change (24h) : <span id="xrp24hchangegreen" class="tag is-success">+<%= xrpvalue.percent_change_24h%> %</span></p>
-                    <%}%>
-                    <% if(xrpvalue.percent_change_24h < 0){%>
-                         <p>Percentage Change (24h) : <span id="xrp24hchangered" class="tag is-danger"><%= xrpvalue.percent_change_24h%> %</span></p>
-
-                    <% }%>
-
-                    <p>Available Supply : <span id="xrpavail"><%=Number(xrpvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
-                    <p>Total Supply : <span id="xrptotal"><%=Number(xrpvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
-                    <p>Maximum Supply : <span id="xrpmax"><%=Number(xrpvalue.max_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
-                    <p>Market Cap (INR) : &#x20b9; <span id="xrpcap"><%=Number(xrpvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-                    <p>24h Volume (INR) : &#x20b9; <span id="xrpday"><%=Number(onedayXrp).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-                    <p>Last Updated : <span id="xrptime"><%=xrpTimeStamp%></span> IST </p>
-
-           <% }%>
-            <hr>
-            <p class="title">BtcxIndia Price</p>
-
-            <% if(btcxvalue === null){%>
-              <div id="loader" class="help"></div>
-              <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"> </span></strong>
-                <p>Last Traded Price : &#x20b9; <span id="btcxtrade"></span> </p>
-                <p>Total Volume (24h) : <span id="btcxvol"></span> XRP</p>
                 <% }%>
 
-                <% if(btcxvalue != null){%>
-                <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"><%= Number(btcxvalue.ask).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong>
-                <p>Last Traded Price : &#x20b9; <span id="btcxtrade"><%=Number(btcxvalue.last_traded_price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-                <p>Total Volume (24h) : <span id="btcxvol"><%=Number(btcxvalue.total_volume_24h).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP</p>
-                <% }%>
 
-              </p>
-            </div>
+                  <% if(xrpvalue.percent_change_24h > 0){%>
+                    <p>Percentage Change (24h) : <span id="xrp24hchangegreen" class="tag is-success"></span></p>
+                    <%}%>
+                      <% if(xrpvalue.percent_change_24h < 0){%>
+                        <p>Percentage Change (24h) : <span id="xrp24hchangered" class="tag is-danger"></span></p>
+
+                        <% }%>
+
+                          <p>Available Supply : <span id="xrpavail"></span> XRP </p>
+                          <p>Total Supply : <span id="xrptotal"></span> XRP </p>
+                          <p>Maximum Supply : <span id="xrpmax"></span> XRP </p>
+                          <p>Market Cap (INR) : &#x20b9; <span id="xrpcap"></span> </p>
+                          <p>24h Volume (INR) : &#x20b9; <span id="xrpday"></span> </p>
+                          <p>Last Updated : <span id="xrptime"></span> IST </p>
+
+                          <% }%>
+
+
+
+                            <% if(xrpvalue != null){%>
+                              <p><strong>Price (INR) : &#x20b9; <span id="xrpvalueinr"><%= Number(xrpvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
+                              <p><strong>Price (USD) : $ <span id="xrpvalueusd"><%= Number(xrpvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong></p>
+
+
+
+                              <% if(xrpvalue.percent_change_1h > 0){%>
+                                <p>Percentage Change (1h) : <span id="xrp1hchangegreen" class="tag is-success">+<%= xrpvalue.percent_change_1h%> %</span></p>
+                                <%}%>
+                                  <% if(xrpvalue.percent_change_1h < 0){%>
+                                    <p>Percentage Change (1h) : <span id="xrp1hchangered" class="tag is-danger"><%= xrpvalue.percent_change_1h%> %</span></p>
+
+                                    <% }%>
+
+
+                                      <% if(xrpvalue.percent_change_24h > 0){%>
+                                        <p>Percentage Change (24h) : <span id="xrp24hchangegreen" class="tag is-success">+<%= xrpvalue.percent_change_24h%> %</span></p>
+                                        <%}%>
+                                          <% if(xrpvalue.percent_change_24h < 0){%>
+                                            <p>Percentage Change (24h) : <span id="xrp24hchangered" class="tag is-danger"><%= xrpvalue.percent_change_24h%> %</span></p>
+
+                                            <% }%>
+
+                                              <p>Available Supply : <span id="xrpavail"><%=Number(xrpvalue.available_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
+                                              <p>Total Supply : <span id="xrptotal"><%=Number(xrpvalue.total_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
+                                              <p>Maximum Supply : <span id="xrpmax"><%=Number(xrpvalue.max_supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP </p>
+                                              <p>Market Cap (INR) : &#x20b9; <span id="xrpcap"><%=Number(xrpvalue.market_cap_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                                              <p>24h Volume (INR) : &#x20b9; <span id="xrpday"><%=Number(onedayXrp).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                                              <p>Last Updated : <span id="xrptime"><%=xrpTimeStamp%></span> IST </p>
+
+                                              <% }%>
+                                                <hr>
+                                                <p class="title">BtcxIndia Price</p>
+
+                                                <% if(btcxvalue === null){%>
+                                                  <div id="loader" class="help"></div>
+                                                  <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"> </span></strong>
+                                                    <p>Last Traded Price : &#x20b9; <span id="btcxtrade"></span> </p>
+                                                    <p>Total Volume (24h) : <span id="btcxvol"></span> XRP</p>
+                                                    <% }%>
+
+                                                      <% if(btcxvalue != null){%>
+                                                        <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"><%= Number(btcxvalue.ask).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong>
+                                                          <p>Last Traded Price : &#x20b9; <span id="btcxtrade"><%=Number(btcxvalue.last_traded_price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                                                          <p>Total Volume (24h) : <span id="btcxvol"><%=Number(btcxvalue.total_volume_24h).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP</p>
+                                                          <% }%>
+
+                                                        </p>
+      </div>
     </div>
-</div>
-<div class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <div class="box has-text-centered">
-      <h1 style="color : black;">Crypto Alerts</h1>
-      <h3>Receive alerts via email and SMS(coming soon) when there is an abnormal increase or decrease in the Cryptocurreny value.</h3>
-      <div class="field">
-  <div class="control has-icons-left">
-    <input class="input is-large" type="email" placeholder="Email" disabled>
-    <span class="icon is-small is-left">
+  </div>
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box has-text-centered">
+        <h1 style="color : black;">Crypto Alerts</h1>
+        <h3>Receive alerts via email and SMS(coming soon) when there is an abnormal increase or decrease in the Cryptocurreny value.</h3>
+        <div class="field">
+          <div class="control has-icons-left">
+            <input class="input is-large" type="email" placeholder="Email" disabled>
+            <span class="icon is-small is-left">
       <i class="fa fa-envelope"></i>
     </span>
-  </div>
-  <label class="checkbox">
+          </div>
+          <label class="checkbox">
   <input type="checkbox">
   Bitcoin Alerts
 </label>
-<label class="checkbox">
+          <label class="checkbox">
 <input type="checkbox">
 Ripple Alerts
 </label>
-<label class="checkbox">
+          <label class="checkbox">
 <input type="checkbox">
 Ethereum Alerts
 </label>
-  <br>
-  <br>
+          <br>
+          <br>
 
-  <div class="media-right"><a class="button is-primary is-large" disabled>Subscribe Now</a></div>
-  <p style="color:red; font-weight: bold; ">(This feature is coming soon!)</p>
-</div>
+          <div class="media-right"><a class="button is-primary is-large" disabled>Subscribe Now</a></div>
+          <p style="color:red; font-weight: bold; ">(This feature is coming soon!)</p>
+        </div>
+      </div>
     </div>
+
+    <button class="modal-close is-large" aria-label="close"></button>
   </div>
 
-  <button class="modal-close is-large" aria-label="close"></button>
-</div>
 
-
-<footer class="footer">
+  <footer class="footer">
     <div class="container">
-        <div class="content has-text-centered">
-            <p>
-               Made with <span class="icon"><i class="fa fa-heart"></i></span>  by <a target="_blank" href="https://www.facebook.com/sriramVJrasigan">Sriram J</a>.
-            </p>
-            <p>Do you like my works? Donations makes me to deliver lot more stuffs!</p>
-            <div class="columns">
-              <div class="column">
-                <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" class="CurrencyIcon-gpKYyS gdTZXO"><g fill="none" fill-rule="evenodd"><circle fill="#FFAD02" cx="19" cy="19" r="19"></circle><path d="M24.7 19.68a3.63 3.63 0 0 0 1.47-2.06c.74-2.77-.46-4.87-3.2-5.6l.89-3.33a.23.23 0 0 0-.16-.28l-1.32-.35a.23.23 0 0 0-.28.15l-.89 3.33-1.75-.47.88-3.32a.23.23 0 0 0-.16-.28l-1.31-.35a.23.23 0 0 0-.28.15l-.9 3.33-3.73-1a.23.23 0 0 0-.27.16l-.36 1.33c-.03.12.04.25.16.28l.22.06a1.83 1.83 0 0 1 1.28 2.24l-1.9 7.09a1.83 1.83 0 0 1-2.07 1.33.23.23 0 0 0-.24.12l-.69 1.24a.23.23 0 0 0 0 .2c.02.07.07.12.14.13l3.67.99-.89 3.33c-.03.12.04.24.16.27l1.32.35c.12.03.24-.04.28-.16l.89-3.32 1.76.47-.9 3.33c-.02.12.05.24.16.27l1.32.35c.12.03.25-.04.28-.16l.9-3.32.87.23c2.74.74 4.83-.48 5.57-3.25.35-1.3-.05-2.6-.92-3.48zm-5.96-5.95l2.64.7a1.83 1.83 0 0 1 1.28 2.24 1.83 1.83 0 0 1-2.23 1.3l-2.64-.7.95-3.54zm1.14 9.8l-3.51-.95.95-3.54 3.51.94a1.83 1.83 0 0 1 1.28 2.24 1.83 1.83 0 0 1-2.23 1.3z" fill="#FFF">
+      <div class="content has-text-centered">
+        <p>
+          Made with <span class="icon"><i class="fa fa-heart"></i></span> by <a target="_blank" href="https://www.facebook.com/sriramVJrasigan">Sriram J</a>.
+        </p>
+        <p>Do you like my works? Donations makes me to deliver lot more stuffs!</p>
+        <div class="columns">
+          <div class="column">
+            <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" class="CurrencyIcon-gpKYyS gdTZXO"><g fill="none" fill-rule="evenodd"><circle fill="#FFAD02" cx="19" cy="19" r="19"></circle><path d="M24.7 19.68a3.63 3.63 0 0 0 1.47-2.06c.74-2.77-.46-4.87-3.2-5.6l.89-3.33a.23.23 0 0 0-.16-.28l-1.32-.35a.23.23 0 0 0-.28.15l-.89 3.33-1.75-.47.88-3.32a.23.23 0 0 0-.16-.28l-1.31-.35a.23.23 0 0 0-.28.15l-.9 3.33-3.73-1a.23.23 0 0 0-.27.16l-.36 1.33c-.03.12.04.25.16.28l.22.06a1.83 1.83 0 0 1 1.28 2.24l-1.9 7.09a1.83 1.83 0 0 1-2.07 1.33.23.23 0 0 0-.24.12l-.69 1.24a.23.23 0 0 0 0 .2c.02.07.07.12.14.13l3.67.99-.89 3.33c-.03.12.04.24.16.27l1.32.35c.12.03.24-.04.28-.16l.89-3.32 1.76.47-.9 3.33c-.02.12.05.24.16.27l1.32.35c.12.03.25-.04.28-.16l.9-3.32.87.23c2.74.74 4.83-.48 5.57-3.25.35-1.3-.05-2.6-.92-3.48zm-5.96-5.95l2.64.7a1.83 1.83 0 0 1 1.28 2.24 1.83 1.83 0 0 1-2.23 1.3l-2.64-.7.95-3.54zm1.14 9.8l-3.51-.95.95-3.54 3.51.94a1.83 1.83 0 0 1 1.28 2.24 1.83 1.83 0 0 1-2.23 1.3z" fill="#FFF">
                     </path>
                   </g>
                 </svg>
-                <p>Bitcoin(BTC) : <a target="_blank" href="https://live.blockcypher.com/btc/address/1EjiYR7iDAxA5XrZeHX1QELGSK3cAPvA6m/">1EjiYR7iDAxA5XrZeHX1QELGSK3cAPvA6m</a></p>
-              </div>
-              <div class="column">
-                  <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" class="CurrencyIcon-ljvvYD iPihVe"><g fill="none" fill-rule="evenodd"><circle fill="#73a939" cx="19" cy="19" r="19"></circle><path d="M24.5 16.72c.37-.76.48-1.64.25-2.52-.75-2.76-2.84-3.98-5.58-3.25l-.89-3.32a.23.23 0 0 0-.28-.16l-1.32.35a.23.23 0 0 0-.16.27l.9 3.33-1.76.47-.9-3.32a.23.23 0 0 0-.27-.16l-1.32.35a.23.23 0 0 0-.16.28l.9 3.32-3.74 1a.23.23 0 0 0-.16.29l.35 1.32c.04.12.16.2.28.17l.22-.06c.97-.26 1.97.32 2.23 1.3l1.9 7.08c.25.93-.25 1.87-1.13 2.2a.23.23 0 0 0-.14.21l.02 1.43c0 .07.04.13.1.18.05.04.12.05.19.04l3.67-.99.9 3.33c.03.12.15.19.27.15l1.31-.35c.12-.03.2-.16.16-.28l-.88-3.32 1.75-.47.9 3.33c.03.12.15.19.27.15l1.32-.35c.12-.03.19-.16.16-.28l-.9-3.32.88-.24c2.75-.73 3.95-2.83 3.2-5.6a3.63 3.63 0 0 0-2.54-2.56zm-8.13-2.17l2.63-.7c.97-.26 1.97.32 2.23 1.3.27.97-.3 1.98-1.28 2.24l-2.63.7-.95-3.54zm5.88 7.91l-3.5.94-.96-3.54 3.51-.94c.97-.26 1.97.32 2.24 1.3.26.98-.32 1.98-1.29 2.24z" fill="#FFF"></path></g></svg>
-                  <p>Bitcoin Cash(BCH) : <a target="_blank" href="https://www.blocktrail.com/BCC/address/15zkBiXaLJPQJ7sexyBVuG6t56DtcEU47p">15zkBiXaLJPQJ7sexyBVuG6t56DtcEU47p</a></p>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 32 32" class="CurrencyIcon-fYyhNC iJKfaL"><g fill="none" fill-rule="evenodd"><ellipse cx="16" cy="16" fill="#6F7CBA" rx="16" ry="16"></ellipse><path fill="#FFF" d="M10.13 17.76c-.1-.15-.06-.2.09-.12l5.49 3.09c.15.08.4.08.56 0l5.58-3.08c.16-.08.2-.03.1.11L16.2 25.9c-.1.15-.28.15-.38 0l-5.7-8.13zm.04-2.03a.3.3 0 0 1-.13-.42l5.74-9.2c.1-.15.25-.15.34 0l5.77 9.19c.1.14.05.33-.12.41l-5.5 2.78a.73.73 0 0 1-.6 0l-5.5-2.76z"></path></g></svg>
-                <p>Ethereum(ETH) : <a target="_blank" href="https://etherscan.io/address/0x0FFB4B2D9815F7d095F18f6f41D2F3B047B4F2D8">0x0FFB4B2D9815F7d095F18f6f41D2F3B047B4F2D8</a> </p>
-              </div>
-              <div class="column">
-                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" class="CurrencyIcon-fbtSMQ ehnSVZ"><g fill="none" fill-rule="evenodd"><circle cx="19" cy="19" r="19" fill="#B5B5B5" fill-rule="nonzero"></circle><path fill="#FFF" d="M12.29 28.04l1.29-5.52-1.58.67.63-2.85 1.64-.68L16.52 10h5.23l-1.52 7.14 2.09-.74-.58 2.7-2.05.8-.9 4.34h8.1l-.99 3.8z"></path></g></svg>
-                <p>Litecoin(LTC) : <a target="_blank" href="https://live.blockcypher.com/ltc/address/LVtvd2XgAxqrAo2pGhaGs7KgvhgZD2RMNg/">LVtvd2XgAxqrAo2pGhaGs7KgvhgZD2RMNg</a> </p>
-              </div>
-            </div>
+            <p>Bitcoin(BTC) : <a target="_blank" href="https://live.blockcypher.com/btc/address/1EjiYR7iDAxA5XrZeHX1QELGSK3cAPvA6m/">1EjiYR7iDAxA5XrZeHX1QELGSK3cAPvA6m</a></p>
+          </div>
+          <div class="column">
+            <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" class="CurrencyIcon-ljvvYD iPihVe"><g fill="none" fill-rule="evenodd"><circle fill="#73a939" cx="19" cy="19" r="19"></circle><path d="M24.5 16.72c.37-.76.48-1.64.25-2.52-.75-2.76-2.84-3.98-5.58-3.25l-.89-3.32a.23.23 0 0 0-.28-.16l-1.32.35a.23.23 0 0 0-.16.27l.9 3.33-1.76.47-.9-3.32a.23.23 0 0 0-.27-.16l-1.32.35a.23.23 0 0 0-.16.28l.9 3.32-3.74 1a.23.23 0 0 0-.16.29l.35 1.32c.04.12.16.2.28.17l.22-.06c.97-.26 1.97.32 2.23 1.3l1.9 7.08c.25.93-.25 1.87-1.13 2.2a.23.23 0 0 0-.14.21l.02 1.43c0 .07.04.13.1.18.05.04.12.05.19.04l3.67-.99.9 3.33c.03.12.15.19.27.15l1.31-.35c.12-.03.2-.16.16-.28l-.88-3.32 1.75-.47.9 3.33c.03.12.15.19.27.15l1.32-.35c.12-.03.19-.16.16-.28l-.9-3.32.88-.24c2.75-.73 3.95-2.83 3.2-5.6a3.63 3.63 0 0 0-2.54-2.56zm-8.13-2.17l2.63-.7c.97-.26 1.97.32 2.23 1.3.27.97-.3 1.98-1.28 2.24l-2.63.7-.95-3.54zm5.88 7.91l-3.5.94-.96-3.54 3.51-.94c.97-.26 1.97.32 2.24 1.3.26.98-.32 1.98-1.29 2.24z" fill="#FFF"></path></g></svg>
+            <p>Bitcoin Cash(BCH) : <a target="_blank" href="https://www.blocktrail.com/BCC/address/15zkBiXaLJPQJ7sexyBVuG6t56DtcEU47p">15zkBiXaLJPQJ7sexyBVuG6t56DtcEU47p</a></p>
+          </div>
         </div>
+        <div class="columns">
+          <div class="column">
+            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 32 32" class="CurrencyIcon-fYyhNC iJKfaL"><g fill="none" fill-rule="evenodd"><ellipse cx="16" cy="16" fill="#6F7CBA" rx="16" ry="16"></ellipse><path fill="#FFF" d="M10.13 17.76c-.1-.15-.06-.2.09-.12l5.49 3.09c.15.08.4.08.56 0l5.58-3.08c.16-.08.2-.03.1.11L16.2 25.9c-.1.15-.28.15-.38 0l-5.7-8.13zm.04-2.03a.3.3 0 0 1-.13-.42l5.74-9.2c.1-.15.25-.15.34 0l5.77 9.19c.1.14.05.33-.12.41l-5.5 2.78a.73.73 0 0 1-.6 0l-5.5-2.76z"></path></g></svg>
+            <p>Ethereum(ETH) : <a target="_blank" href="https://etherscan.io/address/0x0FFB4B2D9815F7d095F18f6f41D2F3B047B4F2D8">0x0FFB4B2D9815F7d095F18f6f41D2F3B047B4F2D8</a> </p>
+          </div>
+          <div class="column">
+            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" class="CurrencyIcon-fbtSMQ ehnSVZ"><g fill="none" fill-rule="evenodd"><circle cx="19" cy="19" r="19" fill="#B5B5B5" fill-rule="nonzero"></circle><path fill="#FFF" d="M12.29 28.04l1.29-5.52-1.58.67.63-2.85 1.64-.68L16.52 10h5.23l-1.52 7.14 2.09-.74-.58 2.7-2.05.8-.9 4.34h8.1l-.99 3.8z"></path></g></svg>
+            <p>Litecoin(LTC) : <a target="_blank" href="https://live.blockcypher.com/ltc/address/LVtvd2XgAxqrAo2pGhaGs7KgvhgZD2RMNg/">LVtvd2XgAxqrAo2pGhaGs7KgvhgZD2RMNg</a> </p>
+          </div>
+        </div>
+      </div>
     </div>
-</footer>
+  </footer>
 </body>
 
-<script  type="text/javascript" src="/js/request.js"></script>
-<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script  type="text/javascript">
+<script type="text/javascript" src="/js/request.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+  function fetchdata() {
+    $.ajax({
+      url: 'updateprice',
+      type: 'post',
+      success: function(response) {
+        if (response != null) {
+          updateprice(response);
+        }
 
-function fetchdata(){
-  $.ajax({
-  url: 'updateprice',
-  type: 'post',
-  success: function(response){
-    if(response!=null){updateprice(response);}
+      },
+      error: function(response) {
 
-  },
-  error: function(response){
-    console.log('Server Responded with 503 forbidden');
+        console.log('Server Responded with 503 forbidden');
+      }
+
+
+    });
   }
 
-
- });
-}
-
-$(document).ready(function(){
-  $("#subscribe").click(function() {
-    $(".modal").addClass("is-active");
+  $(document).ready(function() {
+    $("#subscribe").click(function() {
+      $(".modal").addClass("is-active");
+    });
+    $(".modal-close").click(function() {
+      $(".modal").removeClass("is-active");
+    });
+    setInterval(fetchdata, 10000);
   });
-  $(".modal-close").click(function() {
-   $(".modal").removeClass("is-active");
-});
- setInterval(fetchdata,10000);
-});
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111767825-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
 
   gtag('config', 'UA-111767825-1');
 </script>
 <script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:734181,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  (function(h, o, t, j, a, r) {
+    h.hj = h.hj || function() {
+      (h.hj.q = h.hj.q || []).push(arguments)
+    };
+    h._hjSettings = {
+      hjid: 734181,
+      hjsv: 6
+    };
+    a = o.getElementsByTagName('head')[0];
+    r = o.createElement('script');
+    r.async = 1;
+    r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
 </script>
+
 </html>
