@@ -14,8 +14,8 @@ const bot = new TelegramBot(token, {polling: true});
 
 
 
-// var port = process.env.PORT;
-var port = 5000;
+var port = process.env.PORT;
+// var port = 5000;
 
 var io = require('socket.io').listen(app.listen(port));
 
