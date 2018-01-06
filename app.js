@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require("express");
 var app = express();
 const bodyParser = require('body-parser');
@@ -103,6 +105,26 @@ function getStatus(req, res, next){
 
 }
 
+
+
+   let telRipple = (next) => {
+     console.log('waiting');
+
+     request.get(xrpUrl,function(err,res,body){
+        if(err){
+
+        }else{
+           xrpvalue = JSON.parse(body)[0];
+           xrpTimeStamp = moment.unix(xrpvalue.last_updated).utcOffset("+05:30").format("Do MMMM YYYY, HH:mm");
+           onedayXrp = xrpvalue["24h_volume_inr"];
+           next(xrpvalue);
+
+        }
+
+     });
+   };
+
+
 app.get("/", getStatus,function(req, res){
 
    res.render("home",{btcvalue:btcvalue,xrpvalue:xrpvalue,ethvalue:ethvalue,onedayBtc:onedayBtc,onedayXrp:onedayXrp,onedayEth:onedayEth,btcTimeStamp:btcTimeStamp,xrpTimeStamp:xrpTimeStamp,ethTimeStamp:ethTimeStamp,btcxvalue:btcxvalue});
@@ -118,10 +140,16 @@ app.post('/updateprice',getStatus, function(req,res){
 });
 
 bot.on('message', (msg) => {
-console.log('hi');
+let name;
 var Hi = "hi";
 if (msg.text.toString().toLowerCase().indexOf(Hi) === 0) {
 bot.sendMessage(msg.chat.id,"Hello dear user");
+}
+console.log(msg.text.toString().toLowerCase());
+if (msg.text.toString().toLowerCase() === '/xrpinr') {
+  console.log('Hello');
+  telRipple((xrpvalue) =>   bot.sendMessage(msg.chat.id,`Ripple(XRP) price is Rs. ${xrpvalue.price_inr}`));
+
 }
 
 });
