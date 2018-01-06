@@ -14,8 +14,8 @@ const bot = new TelegramBot(token, {polling: true});
 
 
 
-var port = process.env.PORT;
-// var port = 5000;
+// var port = process.env.PORT;
+var port = 5000;
 
 var io = require('socket.io').listen(app.listen(port));
 
@@ -145,12 +145,23 @@ var Hi = "hi";
 if (msg.text.toString().toLowerCase().indexOf(Hi) === 0) {
 bot.sendMessage(msg.chat.id,"Hello dear user");
 }
-console.log(msg.text.toString().toLowerCase());
 if (msg.text.toString().toLowerCase() === '/xrpinr') {
-  console.log('Hello');
-  telRipple((xrpvalue) =>   bot.sendMessage(msg.chat.id,`Ripple(XRP) price is Rs. ${xrpvalue.price_inr}`));
+  telRipple((xrpvalue) => {
+    let telXrpInr = Number(xrpvalue.price_inr).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    bot.sendMessage(msg.chat.id,`Ripple(XRP) price is Rs. ${telXrpInr}`);
+  });
 
 }
+
+if (msg.text.toString().toLowerCase() === '/xrpusd') {
+  telRipple((xrpvalue) => {
+    let telXrpInr = Number(xrpvalue.price_usd).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    bot.sendMessage(msg.chat.id,`Ripple(XRP) price is $${telXrpInr}`);
+  });
+
+}
+
+
 
 });
 
