@@ -1,0 +1,8 @@
+{
+  "name": "Buyhatke Offers Notifications",
+  "short_name": "Buyhatke Offers Notifications", 
+  "gcm_sender_id": "539434688778",
+  "gcm_user_visible_only": true,
+  "start_url": "/",
+  "display": "standalone"
+}
