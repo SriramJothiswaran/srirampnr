@@ -4,12 +4,15 @@ var express = require("express");
 var app = express();
 const bodyParser = require('body-parser');
 const request = require("request");
+const fs = require('fs');
 var moment = require('moment');
 moment().format();
 var cloudscraper = require('cloudscraper');
 const TelegramBot = require('node-telegram-bot-api');
 const token = '543856122:AAHWgF_5OvoTJ17T2nQY-f8FR_NSNDb4ye0';
 const bot = new TelegramBot(token, {polling: true});
+const download = require('download');
+
 
 
 
@@ -168,6 +171,32 @@ if (msg.text.toString().toLowerCase() === '/xrpusd') {
 bot.on('polling_error', (error) => {
 
   console.log(error.code);  // => 'EFATAL'
+});
+
+app.get('/medium', (req,res) => {
+  res.render('medium');
+});
+
+app.post('/mediumdownload', (req,res) => {
+  let url = req.body.url;
+  url = url.split('-');
+  url = url[url.length - 1];
+  request.get('https://medium.com/p/'+url+'/notes',function(err,ress,body){
+     if(err){
+
+     }else{
+       var x = JSON.parse(body.substr(16));
+       var streamURL = x.payload.post.audioVersionUrl;
+       res.redirect(streamURL);
+       // download(streamURL, 'dist').then(() => {
+       //        console.log('done!');
+       //    });
+
+
+
+     }
+
+  });
 });
 
 console.log("Listening on port " + port);
