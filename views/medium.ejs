@@ -4,26 +4,31 @@
     <meta charset="utf-8">
     <title>Medium Audio Downloader</title>
     <link rel="shortcut icon" type="image/png" href="/rupee-128.png" />
-    <link rel="stylesheet" href="/css/medium.css"/>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+
+
 
   </head>
   <body>
-    <form action="mediumdownload" method="post">
-      <div class="search">
-        <svg class="search-svg" viewBox="0 0 320 70"
-             data-init="M160,3 L160,3 a27,27 0 0,1 0,54 L160,57 a27,27 0 0,1 0,-54 M197,67 181.21,51.21"
-             data-mid="M160,3 L160,3 a27,27 0 0,1 0,54 L160,57 a27,27 0 0,1 0,-54 M179.5,49.5 179.5,49.5"
-             data-active="M27,3 L293,3 a27,27 0 0,1 0,54 L27,57 a27,27 0 0,1 0,-54 M179.5,49.5 179.5,49.5">
-          <path class="search-svg__path" d="M160,3 L160,3 a27,27 0 0,1 0,54 L160,57 a27,27 0 0,1 0,-54 M197,67 181.21,51.21" />
-        </svg>
-        <input type="text" name="url" class="search-input" placeholder="Enter Audio URL" />
-        <div class="search-close"></div>
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
 
+                  <br/><strong>Medium</strong> Audio Downloader <small>(&#946;eta)</small>
+              </h1>
+        </div>
       </div>
+    </section>
+    <form action="mediumdownload" method="post">
+
+    <div class="center">
+      <input class="input is-rounded is-large" name="url" type="text" placeholder="enter medium audio post url">
+      <button type="submit" class="button is-danger is-rounded is-medium" style="margin-top:10px" name="button">Download</button>
+    </div>
     </form>
 
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js'></script>
-    <script type="text/javascript" src="/js/main.js"></script>
+
   </body>
 </html>

@@ -17,8 +17,8 @@ const download = require('download');
 
 
 
-var port = process.env.PORT;
-// var port = 5000;
+// var port = process.env.PORT;
+var port = 5000;
 
 var io = require('socket.io').listen(app.listen(port));
 
@@ -181,6 +181,7 @@ app.post('/mediumdownload', (req,res) => {
   let url = req.body.url;
   url = url.split('-');
   url = url[url.length - 1];
+  console.log(url);
   request.get('https://medium.com/p/'+url+'/notes',function(err,ress,body){
      if(err){
 
