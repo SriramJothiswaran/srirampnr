@@ -190,10 +190,7 @@ app.get('/mediumdownload', (req,res) => {
        var streamURL = x.payload.post.audioVersionUrl;
        var fileName = x.payload.post.slug.substr(0,4);
        res.render('download',{streamURL:streamURL,fileName:fileName})
-       // res.redirect(streamURL);
-       // download(streamURL, 'dist').then(() => {
-       //        console.log('done!');
-       //    });
+
 
 
 
