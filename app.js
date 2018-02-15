@@ -177,8 +177,8 @@ app.get('/medium', (req,res) => {
   res.render('medium');
 });
 
-app.post('/mediumdownload', (req,res) => {
-  let url = req.body.url;
+app.get('/mediumdownload', (req,res) => {
+  let url = req.query.url;
   url = url.split('-');
   url = url[url.length - 1];
   console.log(url);
