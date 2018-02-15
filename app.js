@@ -184,11 +184,13 @@ app.post('/mediumdownload', (req,res) => {
   console.log(url);
   request.get('https://medium.com/p/'+url+'/notes',function(err,ress,body){
      if(err){
-
+        console.log('error occured');
      }else{
        var x = JSON.parse(body.substr(16));
        var streamURL = x.payload.post.audioVersionUrl;
-       res.redirect(streamURL);
+       var fileName = x.payload.post.slug.substr(0,4);
+       res.render('download',{streamURL:streamURL,fileName:fileName})
+       // res.redirect(streamURL);
        // download(streamURL, 'dist').then(() => {
        //        console.log('done!');
        //    });
