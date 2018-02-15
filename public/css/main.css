@@ -1,3 +1,5 @@
+
+
 section {
   margin-bottom: 0px;
 }
@@ -990,7 +992,22 @@ a:hover {
   left: 25%;
   width: 50%;
   height: 50%;
-  top: 25%;
+  top: 35%;
   position: absolute;
   text-align: center;
+}
+@media only screen and (max-width: 500px) {
+  .center {
+    left: 8%;
+    width: 80%;
+    height: 50%;
+    top: 61%;
+    position: absolute;
+    text-align: center;
+  }
+}
+
+
+.info-head{
+  font-size: 25px;
 }
