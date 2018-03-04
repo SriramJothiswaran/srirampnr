@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const btcUrl = "https://api.coinmarketcap.com/v1/ticker/bitcoin/?convert=INR";
 const xrpUrl = "https://api.coinmarketcap.com/v1/ticker/ripple/?convert=INR";
-const btcxUrl = "https://api.btcxindia.com/ticker/";
+const btcxUrl = "https://www.zebapi.com/api/v1/market/ticker-new/xrp/inr";
 const ethUrl = "https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=INR";
 var btcvalue = null;
 var xrpvalue = null;
@@ -91,11 +91,12 @@ function getStatus(req, res, next){
    cloudscraper.get(btcxUrl, function(error, response, body) {
      if (error) {
        console.log('Error occurred');
+       console.log(error);
      } else {
-
-      if(response.headers["content-type"] == 'application/json'){
+        console.log(body);
          btcxvalue = JSON.parse(body);
-      }
+         console.log(btcxvalue);
+
 
        // next();
        // setTimeout(function(){
@@ -103,6 +104,18 @@ function getStatus(req, res, next){
        // }, 3000);
      }
    });
+   // request.get(btcxUrl,function(err,res,body){
+   //    if(err){
+   //
+   //    }else{
+   //        btcxvalue = JSON.parse(body);
+   //        console.log(btcxvalue);
+   //    }
+   //
+   //
+   //
+   // });
+
 
    next();
 
