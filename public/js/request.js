@@ -85,15 +85,15 @@ if(response.btcxvalue != null){
     if(document.getElementById('loader') != null){
       document.getElementById('loader').classList.remove("help");
     }
-    document.getElementById('btcxvalueinr').innerHTML = Number(response.btcxvalue.market).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('btcxvalueinr').innerHTML = Number(response.btcxvalue.ask).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   }
   if(response.btcxvalue.last_traded_price != null){
-    document.getElementById('btcxtrade').innerHTML = Number(response.btcxvalue.sell).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('btcxtrade').innerHTML = Number(response.btcxvalue.last_traded_price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   }
   if(response.btcxvalue.total_volume_24h !=null){
-    document.getElementById('btcxvol').innerHTML = Number(response.btcxvalue.volume).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('btcxvol').innerHTML = Number(response.btcxvalue.total_volume_24h).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   }
 }
