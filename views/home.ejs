@@ -251,9 +251,9 @@
                                                     <% }%>
 
                                                       <% if(btcxvalue != null){%>
-                                                        <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"><%= Number(btcxvalue.market).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong>
-                                                          <p>Sell Price : &#x20b9; <span id="btcxtrade"><%=Number(btcxvalue.sell).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-                                                          <p>Total Volume (24h) : <span id="btcxvol"><%=Number(btcxvalue.volume).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP</p>
+                                                        <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"><%= Number(btcxvalue.ask).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong>
+                                                          <p>Sell Price : &#x20b9; <span id="btcxtrade"><%=Number(btcxvalue.last_traded_price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
+                                                          <p>Total Volume (24h) : <span id="btcxvol"><%=Number(btcxvalue.total_volume_24h).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP</p>
                                                           <% }%>
 
 
