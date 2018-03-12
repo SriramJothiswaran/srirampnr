@@ -93,7 +93,7 @@ function getStatus(req, res, next){
          console.log('Error occurred');
         console.log(error);
        } else {
- 
+
       if(response.headers["content-type"] == 'application/json'){
         console.log(body);
            btcxvalue = JSON.parse(body);
@@ -212,6 +212,29 @@ app.get('/mediumdownload', (req,res) => {
      }
 
   });
+});
+
+app.get('/api',(req,res) => {
+  res.render('api');
+});
+app.get('/part1',(req,res) => {
+  res.render('part1');
+});
+
+app.get('/part2',(req,res) => {
+  res.render('part2');
+});
+
+app.get('/part3',(req,res) => {
+  res.render('part3');
+});
+
+app.get('/part4',(req,res) => {
+  res.render('part4');
+});
+
+app.get('/part5',(req,res) => {
+  res.render('part5');
 });
 
 console.log("Listening on port " + port);
