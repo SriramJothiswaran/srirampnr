@@ -238,28 +238,21 @@
                                                 <hr>
                                                 <div class="notification is-danger">
                                                   <button class="delete"></button>
-                                                  BTCXIndia service will be halted from 05 May, 2018
+                                                  This is exclusively for IPL 2018
                                                 </div>
-
-                                                <p class="title">Zebpay Price</p>
-
-
-                                                <% if(btcxvalue === null){%>
-                                                  <div id="loader" class="help"></div>
-                                                  <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"> </span></strong>
-                                                    <p>Last Traded Price : &#x20b9; <span id="btcxtrade"></span> </p>
-                                                    <p>Total Volume (24h) : <span id="btcxvol"></span> XRP</p>
-                                                    <% }%>
-
-                                                      <% if(btcxvalue != null){%>
-                                                        <p> <strong> Price : &#x20b9;<span id="btcxvalueinr"><%= Number(btcxvalue.ask).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span></strong>
-                                                          <p>Sell Price : &#x20b9; <span id="btcxtrade"><%=Number(btcxvalue.last_traded_price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> </p>
-                                                          <p>Total Volume (24h) : <span id="btcxvol"><%=Number(btcxvalue.total_volume_24h).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")%></span> XRP</p>
-                                                          <% }%>
+                                                <h1 class="title">Live Cricket Score</h1>
+                                                <h2><%=cricketScore.$.srs%> - <%=cricketScore.$.type%></h2>
+                                                <h2><%=cricketScore.$.mnum%>, Venue: <%=cricketScore.$.grnd%>, <%=cricketScore.$.vcity%></h2>
+                                                <h2 style="color:white"><%=cricketScore.$.mchDesc%> &nbsp; <span class="tag is-success"><%=cricketScore.state.$.mchState%></span></h2>
+                                                <h2 style="color:white"><%=cricketScore.mscr.btTm.$.sName%> : <%=cricketScore.mscr.btTm.Inngs.$.r%>/<%=cricketScore.mscr.btTm.Inngs.$.wkts%> (<%=cricketScore.mscr.btTm.Inngs.$.ovrs%> overs)</h2>
+                                                <h2 style="color:white"><%=cricketScore.mscr.blgTm.$.sName%> : <%=cricketScore.mscr.blgTm.Inngs.$.r%>/<%=cricketScore.mscr.blgTm.Inngs.$.wkts%> (<%=cricketScore.mscr.blgTm.Inngs.$.ovrs%> overs)</h2>
+                                                <h2 style="color:white"><%=cricketScore.state.$.status%></h2>
+                                                <h2 style="color:white; font-weight:bold"><%=cricketScore.state.$.addnStatus%></h2>
 
 
 
-                                                        </p>
+
+
       </div>
     </div>
   </div>
