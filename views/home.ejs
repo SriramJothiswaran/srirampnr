@@ -244,10 +244,16 @@
                                                 <h2><%=cricketScore.$.srs%> - <%=cricketScore.$.type%></h2>
                                                 <h2><%=cricketScore.$.mnum%>, Venue: <%=cricketScore.$.grnd%>, <%=cricketScore.$.vcity%></h2>
                                                 <h2 style="color:white"><%=cricketScore.$.mchDesc%> &nbsp; <span class="tag is-success"><%=cricketScore.state.$.mchState%></span></h2>
-                                                <h2 style="color:white"><%=cricketScore.mscr.btTm.$.sName%> : <%=cricketScore.mscr.btTm.Inngs.$.r%>/<%=cricketScore.mscr.btTm.Inngs.$.wkts%> (<%=cricketScore.mscr.btTm.Inngs.$.ovrs%> overs)</h2>
-                                                <h2 style="color:white"><%=cricketScore.mscr.blgTm.$.sName%> : <%=cricketScore.mscr.blgTm.Inngs.$.r%>/<%=cricketScore.mscr.blgTm.Inngs.$.wkts%> (<%=cricketScore.mscr.blgTm.Inngs.$.ovrs%> overs)</h2>
-                                                <h2 style="color:white"><%=cricketScore.state.$.status%></h2>
-                                                <h2 style="color:white; font-weight:bold"><%=cricketScore.state.$.addnStatus%></h2>
+
+
+                                                <% if(cricketScore.mscr){%>
+                                                  <h2 style="color:white"><%=cricketScore.mscr.btTm.$.sName%> : <%=cricketScore.mscr.btTm.Inngs.$.r%>/<%=cricketScore.mscr.btTm.Inngs.$.wkts%> (<%=cricketScore.mscr.btTm.Inngs.$.ovrs%> overs)</h2>
+                                                  <h2 style="color:white"><%=cricketScore.mscr.blgTm.$.sName%> : <%=cricketScore.mscr.blgTm.Inngs.$.r%>/<%=cricketScore.mscr.blgTm.Inngs.$.wkts%> (<%=cricketScore.mscr.blgTm.Inngs.$.ovrs%> overs)</h2>
+                                                  <h2 style="color:white"><%=cricketScore.state.$.status%></h2>
+                                                  <h2 style="color:white; font-weight:bold"><%=cricketScore.state.$.addnStatus%></h2>
+
+                                                <%}%>
+
 
 
 
