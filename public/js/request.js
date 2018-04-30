@@ -80,7 +80,7 @@ document.getElementById('xrptime').innerHTML = response.xrpTimeStamp;
 //btcx
 
 if(response.btcxvalue != null){
-  console.log(response);
+  // console.log(response);
   if(response.btcxvalue.ask != null){
     if(document.getElementById('loader') != null){
       document.getElementById('loader').classList.remove("help");
