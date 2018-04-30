@@ -14,6 +14,11 @@
 
   <link rel="shortcut icon" type="image/png" href="/rupee-128.png" />
 
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
+
 </head>
 
 <body>
@@ -241,17 +246,18 @@
                                                   This is exclusively for IPL 2018
                                                 </div>
                                                 <h1 class="title">Live Cricket Score</h1>
-                                                <h2><%=cricketScore.$.srs%> - <%=cricketScore.$.type%></h2>
-                                                <h2><%=cricketScore.$.mnum%>, Venue: <%=cricketScore.$.grnd%>, <%=cricketScore.$.vcity%></h2>
-                                                <h2 style="color:white"><%=cricketScore.$.mchDesc%> &nbsp; <span class="tag is-success"><%=cricketScore.state.$.mchState%></span></h2>
+                                                <h2 id="match-type"><%=cricketScore.$.srs%> - <%=cricketScore.$.type%></h2>
+                                                <h2 id="match-venue"><%=cricketScore.$.mnum%>, Venue: <%=cricketScore.$.grnd%>, <%=cricketScore.$.vcity%></h2>
+                                                <h2 id="match-desc" style="color:white"><%=cricketScore.$.mchDesc%> &nbsp; <span class="tag is-success"><%=cricketScore.state.$.mchState%></span></h2>
 
 
                                                 <% if(cricketScore.mscr){%>
-                                                  <h2 style="color:white"><%=cricketScore.mscr.btTm.$.sName%> : <%=cricketScore.mscr.btTm.Inngs.$.r%>/<%=cricketScore.mscr.btTm.Inngs.$.wkts%> (<%=cricketScore.mscr.btTm.Inngs.$.ovrs%> overs)</h2>
-                                                  <h2 style="color:white"><%=cricketScore.mscr.blgTm.$.sName%> : <%=cricketScore.mscr.blgTm.Inngs.$.r%>/<%=cricketScore.mscr.blgTm.Inngs.$.wkts%> (<%=cricketScore.mscr.blgTm.Inngs.$.ovrs%> overs)</h2>
-                                                  <h2 style="color:white"><%=cricketScore.state.$.status%></h2>
-                                                  <h2 style="color:white; font-weight:bold"><%=cricketScore.state.$.addnStatus%></h2>
-
+                                                  <h2 id="match-bat"  style="color:white"><%=cricketScore.mscr.btTm.$.sName%> : <%=cricketScore.mscr.btTm.Inngs.$.r%>/<%=cricketScore.mscr.btTm.Inngs.$.wkts%> (<%=cricketScore.mscr.btTm.Inngs.$.ovrs%> overs)</h2>
+                                                  <% if(cricketScore.mscr.blgTm.Inngs){ %>
+                                                    <h2 id="match-bowl" style="color:white"><%=cricketScore.mscr.blgTm.$.sName%> : <%=cricketScore.mscr.blgTm.Inngs.$.r%>/<%=cricketScore.mscr.blgTm.Inngs.$.wkts%> (<%=cricketScore.mscr.blgTm.Inngs.$.ovrs%> overs)</h2>
+                                                  <%}%>
+                                                  <h2 id="match-status" style="color:white"><%=cricketScore.state.$.status%></h2>
+                                                  <h2 id="match-addnstatus" style="color:white; font-weight:bold"><%=cricketScore.state.$.addnStatus%></h2>
                                                 <%}%>
 
 
@@ -393,6 +399,11 @@ Ethereum Alerts
     r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
     a.appendChild(r);
   })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+</script>
+<script type="text/javascript">
+  socket.on('new_score', function(msg){{
+    console.log(msg);
+  }});
 </script>
 
 </html>
