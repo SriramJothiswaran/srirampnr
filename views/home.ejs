@@ -259,7 +259,7 @@
                                                   <h2 id="match-status" style="color:white"><%=cricketScore.state.$.status%></h2>
                                                   <h2 id="match-addnstatus" style="color:white; font-weight:bold"><%=cricketScore.state.$.addnStatus%></h2>
                                                 <%}%>
-                                                <p><span style="font-size: 25px; font-weight: bold">Watch IPL Live : </span><a id="stream1" class="button is-info is-inverted">Server 1</a> &nbsp; <a id="stream2" class="button is-info is-inverted">Server 2</a></p>
+                                                <p><span style="font-size: 25px; font-weight: bold">Watch IPL Live : </span><a id="stream1" class="button is-info is-inverted">Server 1</a> &nbsp; <a id="stream2" class="button is-info is-inverted">Server 2</a> &nbsp; <a id="stream3" class="button is-info is-inverted">Server 3</a> </p>
 
 
 
@@ -349,7 +349,7 @@ Ethereum Alerts
   <div id="modelLive1" class="modal">
   <div class="modal-background"></div>
   <div class="modal-content">
-      <iframe width="615" height="410" scrolling="no" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" src="http://www.embedezcast.com/hembedplayer/livecricketis1/1/615/410" allowfullscreen=""></iframe>
+      <iframe id="iframe1" width="615" height="410" scrolling="no" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" src="http://www.embedezcast.com/hembedplayer/livecricketis1/1/615/410" allowfullscreen=""></iframe>
   </div>
   <button id="modalLiveClose1" class="modal-close is-large" aria-label="close"></button>
 </div>
@@ -359,18 +359,21 @@ Ethereum Alerts
 <div id="modelLive2" class="modal">
 <div class="modal-background"></div>
 <div class="modal-content">
-  <iframe width="615" height="360" scrolling="no" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" src="http://www.ucasterplayer.com/hembedplayer/webcriclq115/1/615/360" allowfullscreen=""></iframe>
+  <iframe id="iframe2" width="615" height="360" scrolling="no" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" src="http://www.ucasterplayer.com/hembedplayer/webcriclq115/1/615/360" allowfullscreen=""></iframe>
 </div>
 <button id="modalLiveClose2" class="modal-close is-large" aria-label="close"></button>
 </div>
 
 
+<!-- Stream 3 -->
 
-
-
-
-
-
+<div id="modelLive3" class="modal">
+<div class="modal-background"></div>
+<div class="modal-content">
+  <iframe id="iframe3" src="http://a1.mylivecricket.cc" width="600" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" scrolling="no"></iframe>
+</div>
+<button id="modalLiveClose3" class="modal-close is-large" aria-label="close"></button>
+</div>
 
   <footer class="footer">
     <div class="container">
@@ -441,12 +444,24 @@ Ethereum Alerts
     });
     $("#modalLiveClose1").click(function() {
       document.getElementById("modelLive1").classList.remove("is-active");
+      var frame = document.getElementById("iframe1");
+      frame.parentNode.removeChild(frame);
     });
     $("#stream2").click(function() {
       document.getElementById("modelLive2").classList.add("is-active");
     });
     $("#modalLiveClose2").click(function() {
       document.getElementById("modelLive2").classList.remove("is-active");
+      var frame = document.getElementById("iframe2");
+      frame.parentNode.removeChild(frame);
+    });
+    $("#stream3").click(function() {
+      document.getElementById("modelLive3").classList.add("is-active");
+    });
+    $("#modalLiveClose3").click(function() {
+      document.getElementById("modelLive3").classList.remove("is-active");
+      var frame = document.getElementById("iframe3");
+      frame.parentNode.removeChild(frame);
     });
     setInterval(fetchdata, 10000);
   });
