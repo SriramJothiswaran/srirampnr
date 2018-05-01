@@ -369,7 +369,7 @@ Ethereum Alerts
 
 <div id="modelLive3" class="modal">
 <div class="modal-background"></div>
-<div class="modal-content">
+<div id="modalContent3" class="modal-content">
   <iframe id="iframe3" src="http://a1.mylivecricket.cc" width="600" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" scrolling="no"></iframe>
 </div>
 <button id="modalLiveClose3" class="modal-close is-large" aria-label="close"></button>
@@ -456,6 +456,7 @@ Ethereum Alerts
       frame.parentNode.removeChild(frame);
     });
     $("#stream3").click(function() {
+      document.getElementById("modalContent3").style.visibility = "visible" ;
       document.getElementById("modelLive3").classList.add("is-active");
     });
     $("#modalLiveClose3").click(function() {
