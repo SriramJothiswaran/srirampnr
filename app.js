@@ -78,10 +78,10 @@ function getStatus(req, res, next) {
     } else {
 
       if (response.headers["content-type"] == 'application/json') {
-        console.log(body);
+        // console.log(body);
         btcxvalue = JSON.parse(body);
       }
-      console.log(btcxvalue);
+      // console.log(btcxvalue);
 
       // next();
       // setTimeout(function(){
@@ -272,7 +272,7 @@ io.on('connection', function(socket) {
       var xml = body;
       to_json(xml, function(error, data) {
         // res.send(data.mchdata.match["0"]);
-        console.log(data.mchdata.match["0"]);
+        // console.log(data.mchdata.match["0"]);
         socket.emit('new_score', data.mchdata.match["0"]);
       });
 
