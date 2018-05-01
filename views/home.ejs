@@ -259,6 +259,8 @@
                                                   <h2 id="match-status" style="color:white"><%=cricketScore.state.$.status%></h2>
                                                   <h2 id="match-addnstatus" style="color:white; font-weight:bold"><%=cricketScore.state.$.addnStatus%></h2>
                                                 <%}%>
+                                                <h2 id="stream"><a id="stream" class="button is-info is-inverted">Watch IPL Live</a></h2>
+
 
 
 
@@ -304,6 +306,57 @@ Ethereum Alerts
 
     <button class="modal-close is-large" aria-label="close"></button>
   </div>
+
+
+  <div id="modalAlert" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box has-text-centered">
+        <h1 style="color : black;">Crypto Alerts</h1>
+        <h3>Receive alerts via email and SMS(coming soon) when there is an abnormal increase or decrease in the Cryptocurreny value.</h3>
+        <div class="field">
+          <div class="control has-icons-left">
+            <input class="input is-large" type="email" placeholder="Email" disabled>
+            <span class="icon is-small is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+          </div>
+          <label class="checkbox">
+  <input type="checkbox">
+  Bitcoin Alerts
+  </label>
+          <label class="checkbox">
+  <input type="checkbox">
+  Ripple Alerts
+  </label>
+          <label class="checkbox">
+  <input type="checkbox">
+  Ethereum Alerts
+  </label>
+          <br>
+          <br>
+
+          <div class="media-right"><a class="button is-primary is-large" disabled>Subscribe Now</a></div>
+          <p style="color:red; font-weight: bold; ">(This feature is coming soon!)</p>
+        </div>
+      </div>
+    </div>
+
+    <button id="modalClose" class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <!-- Modal for IPL Live -->
+  <div id="modelLive" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+      <iframe width="615" height="410" scrolling="no" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" src="http://www.embedezcast.com/hembedplayer/livecricketis1/1/615/410" allowfullscreen=""></iframe>
+  </div>
+  <button id="modalLiveClose" class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+
+
 
 
   <footer class="footer">
@@ -365,10 +418,16 @@ Ethereum Alerts
 
   $(document).ready(function() {
     $("#subscribe").click(function() {
-      $(".modal").addClass("is-active");
+      document.getElementById("modalAlert").classList.add("is-active");
     });
-    $(".modal-close").click(function() {
-      $(".modal").removeClass("is-active");
+    $("#modalClose").click(function() {
+      document.getElementById("modalAlert").classList.remove("is-active");
+    });
+    $("#stream").click(function() {
+      document.getElementById("modelLive").classList.add("is-active");
+    });
+    $("#modalLiveClose").click(function() {
+      document.getElementById("modelLive").classList.remove("is-active");
     });
     setInterval(fetchdata, 10000);
   });
