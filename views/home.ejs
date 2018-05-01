@@ -49,7 +49,7 @@
     </div>
   </section>
   <div class="Marquee">
-    <marquee>Telegram bot for getting live ripple price is under build. Let's Blockchain. </marquee>
+    <marquee>Telegram bot for getting cryptocurrencies price and live cricket scores are available. Mail to <a href="mailto:admin@sriramj.xyz" target="_top">admin@sriramj.xyz</a> to get bot access. No charges, absolutely free to use !</marquee>
   </div>
   <div class="tile is-ancestor">
     <div class="tile is-4 is-vertical is-parent">
@@ -259,7 +259,7 @@
                                                   <h2 id="match-status" style="color:white"><%=cricketScore.state.$.status%></h2>
                                                   <h2 id="match-addnstatus" style="color:white; font-weight:bold"><%=cricketScore.state.$.addnStatus%></h2>
                                                 <%}%>
-                                                <h2 id="stream"><a id="stream" class="button is-info is-inverted">Watch IPL Live</a></h2>
+                                                <p><span style="font-size: 25px; font-weight: bold">Watch IPL Live : </span><a id="stream1" class="button is-info is-inverted">Server 1</a> &nbsp; <a id="stream2" class="button is-info is-inverted">Server 2</a></p>
 
 
 
@@ -346,13 +346,26 @@ Ethereum Alerts
   </div>
 
   <!-- Modal for IPL Live -->
-  <div id="modelLive" class="modal">
+  <div id="modelLive1" class="modal">
   <div class="modal-background"></div>
   <div class="modal-content">
       <iframe width="615" height="410" scrolling="no" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" src="http://www.embedezcast.com/hembedplayer/livecricketis1/1/615/410" allowfullscreen=""></iframe>
   </div>
-  <button id="modalLiveClose" class="modal-close is-large" aria-label="close"></button>
+  <button id="modalLiveClose1" class="modal-close is-large" aria-label="close"></button>
 </div>
+
+<!-- Stream 2 -->
+
+<div id="modelLive2" class="modal">
+<div class="modal-background"></div>
+<div class="modal-content">
+  <iframe width="615" height="360" scrolling="no" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" src="http://www.ucasterplayer.com/hembedplayer/webcriclq115/1/615/360" allowfullscreen=""></iframe>
+</div>
+<button id="modalLiveClose2" class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+
 
 
 
@@ -423,11 +436,17 @@ Ethereum Alerts
     $("#modalClose").click(function() {
       document.getElementById("modalAlert").classList.remove("is-active");
     });
-    $("#stream").click(function() {
-      document.getElementById("modelLive").classList.add("is-active");
+    $("#stream1").click(function() {
+      document.getElementById("modelLive1").classList.add("is-active");
     });
-    $("#modalLiveClose").click(function() {
-      document.getElementById("modelLive").classList.remove("is-active");
+    $("#modalLiveClose1").click(function() {
+      document.getElementById("modelLive1").classList.remove("is-active");
+    });
+    $("#stream2").click(function() {
+      document.getElementById("modelLive2").classList.add("is-active");
+    });
+    $("#modalLiveClose2").click(function() {
+      document.getElementById("modelLive2").classList.remove("is-active");
     });
     setInterval(fetchdata, 10000);
   });
