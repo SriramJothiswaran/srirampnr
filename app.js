@@ -245,7 +245,12 @@ app.get('/smuledownload', (req, res) => {
     console.log(res);
   });
   smule.source(url).then(re => {
-  res.redirect(re);
+    if(re.substr(0,11) != "getaddrinfo"){
+      res.redirect(re);
+    }else{
+      console.log("incorrect url");
+      res.send("incorrect url")
+    }
   });
 
 });
