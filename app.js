@@ -15,6 +15,8 @@ const token = '543856122:AAHWgF_5OvoTJ17T2nQY-f8FR_NSNDb4ye0';
 const bot = new TelegramBot(token, {polling: true});
 const download = require('download');
 var to_json = require('xmljson').to_json;
+const smule = require('smule-api');
+
 
 var port = process.env.PORT;
 // var port = 5000;
@@ -41,8 +43,17 @@ var btcTimeStamp = null;
 var ethTimeStamp = null;
 var xrpTimeStamp = null;
 var btcxTimeStamp = null;
+var newsData = null;
+
+
+
 
 function getStatus(req, res, next) {
+
+  // request('https://newsapi.org/v2/top-headlines?country=in&apiKey=699bf2a52d6043e486c714a3e47f2064', function(error, response, body) {
+  //       newsData = JSON.parse(body);
+  //
+  //   });
 
   request.get(btcUrl, function(err, res, body) {
     if (err) {} else {
@@ -121,31 +132,10 @@ let telRipple = (next) => {
 };
 
 app.get("/", getStatus, function(req, res) {
-  // request('https://criclive-api.herokuapp.com/', function (error, response, body) {
-  //   console.log('error:', error);  Print the error if one occurred
-  //   console.log('statusCode:', response && response.statusCode);  Print the response status code if a response was received
-  //   var testdata = JSON.parse(body);
-  //
-  //    console.log(testdata.data[0].category);
-  //   for(var i=0; i<testdata.data.length; i++){
-  //     if(testdata.data[i].category == "Indian Premier League"){
-  //         console.log(testdata.data[i].matches);
-  //     }
-  //
-  //   }
-  //   });
-
-
-
 
   request('http://synd.cricbuzz.com/j2me/1.0/livematches.xml', function(error, response, body) {
     var xml = body;
     to_json(xml, function(error, data) {
-      // Module returns a JS object
-      // -> { prop1: 'val1', prop2: 'val2', prop3: 'val3' }
-
-      // Format as a JSON string
-      // res.send(data.mchdata.match[0]);
       // res.send(data.mchdata.match["0"]);
       res.render("home", {
         btcvalue: btcvalue,
@@ -158,13 +148,16 @@ app.get("/", getStatus, function(req, res) {
         xrpTimeStamp: xrpTimeStamp,
         ethTimeStamp: ethTimeStamp,
         btcxvalue: btcxvalue,
-        cricketScore: data.mchdata.match[0]
+        cricketScore: data.mchdata.match[0],
+        newsData: newsData
       });
 
-      // -> {"prop1":"val1","prop2":"val2","prop3":"val3"}
     });
 
   });
+
+
+
 
 });
 app.get("/gift", function(req, res) {
@@ -241,6 +234,24 @@ app.get('/mediumdownload', (req, res) => {
 
   });
 });
+
+app.get('/smule', (req, res) => {
+  res.render('smule');
+});
+
+app.get('/smuledownload', (req, res) => {
+  let url = req.query.url;
+  smule.type(url).then(res => {
+    console.log(res);
+  });
+  smule.source(url).then(re => {
+  res.redirect(re);
+  });
+
+});
+
+
+
 
 app.get('/api', (req, res) => {
   res.render('api');
