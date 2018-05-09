@@ -245,7 +245,7 @@ app.get('/smuledownload', (req, res) => {
     console.log(res);
   });
   smule.source(url).then(re => {
-    if(re.substr(0,11) != "getaddrinfo"){
+    if(re.substr(0,11) != "getaddrinfo" && re.substr(0,6) != "Cannot"){
       res.redirect(re);
     }else{
       console.log("incorrect url");
