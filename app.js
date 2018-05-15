@@ -44,12 +44,17 @@ var ethTimeStamp = null;
 var xrpTimeStamp = null;
 var btcxTimeStamp = null;
 var newsData = null;
-
+var questionNumber =null;
+var questionResult =null;
+var questionValue =null;
+var correctAnswer = null;
+var incorrectAnswers = null;
+var randomizedOptions = null;
+var correctAnswerIndex = null;
 
 
 
 function getStatus(req, res, next) {
-
   // request('https://newsapi.org/v2/top-headlines?country=in&apiKey=699bf2a52d6043e486c714a3e47f2064', function(error, response, body) {
   //       newsData = JSON.parse(body);
   //
@@ -81,25 +86,27 @@ function getStatus(req, res, next) {
     }
 
   });
+  console.log("inside getstatus");
+  next();
 
-  cloudscraper.get(btcxUrl, function(error, response, body) {
-    if (error) {
-      console.log('Error occurred');
-      console.log(error);
-    } else {
-
-      if (response.headers["content-type"] == 'application/json') {
-        // console.log(body);
-        btcxvalue = JSON.parse(body);
-      }
-      // console.log(btcxvalue);
-
-      // next();
-      // setTimeout(function(){
-      //   next();
-      // }, 3000);
-    }
-  });
+  // cloudscraper.get(btcxUrl, function(error, response, body) {
+  //   if (error) {
+  //     console.log('Error occurred');
+  //     console.log(error);
+  //   } else {
+  //
+  //     if (response.headers["content-type"] == 'application/json') {
+  //       // console.log(body);
+  //       btcxvalue = JSON.parse(body);
+  //     }
+  //     // console.log(btcxvalue);
+  //
+  //     // next();
+  //     // setTimeout(function(){
+  //     //   next();
+  //     // }, 3000);
+  //   }
+  // });
   // request.get(btcxUrl,function(err,res,body){
   //    if(err){
   //
@@ -112,9 +119,8 @@ function getStatus(req, res, next) {
   //
   // });
 
-  next();
-
 }
+
 
 let telRipple = (next) => {
   console.log('waiting');
@@ -129,10 +135,59 @@ let telRipple = (next) => {
     }
 
   });
+
+
 };
 
-app.get("/", getStatus, function(req, res) {
 
+
+
+function getTrivia(req,res,next){
+  request('https://opentdb.com/api.php?amount=50', function(error, response, body) {
+      if(error){
+
+      }else{
+        questionNumber = Math.floor(Math.random() * 51);
+        questionResult = JSON.parse(body);
+        questionValue = questionResult.results[questionNumber].question;
+        correctAnswer = questionResult.results[questionNumber].correct_answer;
+        incorrectAnswers = [];
+        incorrectAnswers = questionResult.results[questionNumber].incorrect_answers;
+        incorrectAnswers.push(correctAnswer);
+        function shuffle(array) {
+           var currentIndex = array.length, temporaryValue, randomIndex;
+
+          // While there remain elements to shuffle...
+          while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+          }
+
+          return array;
+        }
+
+         randomizedOptions = shuffle(incorrectAnswers);
+         correctAnswerIndex = randomizedOptions.indexOf(correctAnswer);
+        next();
+
+
+
+      }
+
+  });
+
+
+}
+
+app.get("/", getStatus,getTrivia, function(req, res) {
+  console.log("hellllllloooooooo");
   request('http://synd.cricbuzz.com/j2me/1.0/livematches.xml', function(error, response, body) {
     var xml = body;
     to_json(xml, function(error, data) {
@@ -147,9 +202,11 @@ app.get("/", getStatus, function(req, res) {
         btcTimeStamp: btcTimeStamp,
         xrpTimeStamp: xrpTimeStamp,
         ethTimeStamp: ethTimeStamp,
-        btcxvalue: btcxvalue,
         cricketScore: data.mchdata.match[0],
-        newsData: newsData
+        newsData: newsData,
+        questionValue: questionValue,
+        randomizedOptions: randomizedOptions,
+        correctAnswerIndex: correctAnswerIndex
       });
 
     });
@@ -177,6 +234,8 @@ app.post('/updateprice', getStatus, function(req, res) {
     xrpTimeStamp: xrpTimeStamp,
     ethTimeStamp: ethTimeStamp,
     btcxvalue: btcxvalue
+
+
   });
 });
 

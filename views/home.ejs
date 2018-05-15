@@ -33,13 +33,20 @@
       <div class="container">
           <article style="width:60%; margin:auto;" class="message is-warning">
             <div class="message-header">
-            <p>Looking for my WiFi password ?</p>
+            <p>Looking for my WiFi password ? (currently under test ! functionality will not work !)</p>
             <button class="delete" aria-label="delete"></button>
             </div>
             <div class="message-body">
               Answer this simple question to reveal my WiFi password. Access will be revoked after 1 hour.
               No illegal content allowed.
-              <p style="font-weight:bold">This feature will be rolled out tomorrow ! Stay tuned !</p>
+              <p style="font-weight:bold">
+                <%=unescape(questionValue)%>
+              </p>
+              <% for(var i=0; i<randomizedOptions.length; i++) {%>
+                <span></span><input type="radio" name="<%= i %>" value="<%= i %>">&nbsp;<%= randomizedOptions[i] %> &nbsp;
+
+              <% } %>
+
             </div>
           </article>
         <h1 class="title">
@@ -264,7 +271,7 @@
                                                 <h2 id="match-desc" style="color:white"><%=cricketScore.$.mchDesc%> &nbsp; <span class="tag is-success"><%=cricketScore.state.$.mchState%></span></h2>
 
 
-                                                <% if(cricketScore.mscr){%>
+                                                <% if(cricketScore.mscr.btTm.Inngs && cricketScore.mscr.btTm.Inngs.$){%>
                                                   <h2 id="match-bat"  style="color:white"><%=cricketScore.mscr.btTm.$.sName%> : <%=cricketScore.mscr.btTm.Inngs.$.r%>/<%=cricketScore.mscr.btTm.Inngs.$.wkts%> (<%=cricketScore.mscr.btTm.Inngs.$.ovrs%> overs)</h2>
                                                   <% if(cricketScore.mscr.blgTm.Inngs){ %>
                                                     <h2 id="match-bowl" style="color:white"><%=cricketScore.mscr.blgTm.$.sName%> : <%=cricketScore.mscr.blgTm.Inngs.$.r%>/<%=cricketScore.mscr.blgTm.Inngs.$.wkts%> (<%=cricketScore.mscr.blgTm.Inngs.$.ovrs%> overs)</h2>
