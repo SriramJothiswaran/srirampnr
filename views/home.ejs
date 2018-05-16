@@ -270,7 +270,7 @@
                                 <h2 id="match-desc" style="color:white"><%=cricketScore.$.mchDesc%> &nbsp; <span class="tag is-success"><%=cricketScore.state.$.mchState%></span></h2>
 
 
-                                <% if(cricketScore.mscr.btTm.Inngs && cricketScore.mscr.btTm.Inngs.$){%>
+                                <% if(cricketScore.mscr){%>
                                   <h2 id="match-bat" style="color:white"><%=cricketScore.mscr.btTm.$.sName%> : <%=cricketScore.mscr.btTm.Inngs.$.r%>/<%=cricketScore.mscr.btTm.Inngs.$.wkts%> (<%=cricketScore.mscr.btTm.Inngs.$.ovrs%> overs)</h2>
                                   <% if(cricketScore.mscr.blgTm.Inngs){ %>
                                     <h2 id="match-bowl" style="color:white"><%=cricketScore.mscr.blgTm.$.sName%> : <%=cricketScore.mscr.blgTm.Inngs.$.r%>/<%=cricketScore.mscr.blgTm.Inngs.$.wkts%> (<%=cricketScore.mscr.blgTm.Inngs.$.ovrs%> overs)</h2>
@@ -361,7 +361,7 @@ Ethereum Alerts
     <div class="container">
       <div class="content has-text-centered">
         <p>  <iframe src="http://crichd.ws/update/star.php" width="650" height="510" frameborder="0" allowfullscreen=""></iframe> </p>
-        
+
         <p>
           Made with <span class="icon"><i class="fa fa-heart"></i></span> by <a target="_blank" href="https://www.facebook.com/sriramVJrasigan">Sriram J</a>.
         </p>
