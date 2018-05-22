@@ -347,6 +347,10 @@ app.get('/part5', (req, res) => {
   res.render('part5');
 });
 
+app.get('/hbdshahitha', (req, res) => {
+  res.render('hbdsash');
+});
+
 io.on('connection', function(socket) {
   console.log('a user connected');
   setInterval(function() {
