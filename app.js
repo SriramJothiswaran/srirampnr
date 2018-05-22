@@ -18,8 +18,8 @@ var to_json = require('xmljson').to_json;
 const smule = require('smule-api');
 
 
-var port = process.env.PORT;
-// var port = 5000;
+// var port = process.env.PORT;
+var port = 5000;
 
 app.set('views', __dirname + '/views');
 app.set('view engine', "ejs");
