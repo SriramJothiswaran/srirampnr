@@ -16,11 +16,3 @@ javascript:{
 
 
 }
-
-javascript:document.getElementById("loginbutton").onclick = function () {
-      while(window.location.href === "https://www.irctc.co.in/eticketing/mainpage.jsf"){
-        if (document.readyState === 'complete') {
-          alert("page loaded success")
-        }
-      }
-  }
