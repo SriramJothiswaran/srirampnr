@@ -351,6 +351,26 @@ app.get('/hbdshahitha', (req, res) => {
   res.render('hbdsash');
 });
 
+app.get('/sun_tv', (req, res) => {
+  res.render('sun_tv');
+});
+
+app.get('/vijay_tv', (req, res) => {
+  res.render('vijay_tv');
+});
+
+app.get('/sun_music', (req, res) => {
+  res.render('sun_music');
+});
+
+app.get('/colors_tamil', (req, res) => {
+  res.render('colors_tamil');
+});
+
+app.get('/zee_tamil', (req, res) => {
+  res.render('zee_tamil');
+});
+
 io.on('connection', function(socket) {
   console.log('a user connected');
   setInterval(function() {
