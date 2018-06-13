@@ -1020,3 +1020,10 @@ a:hover {
 .is-hidden {
   display: none;
 }
+
+.notify {
+  background-color: orange;
+  box-shadow: 5px 10px red;
+  padding: 10px;
+  margin-bottom: 5px;
+}
