@@ -355,20 +355,41 @@ app.get('/sun_tv', (req, res) => {
   res.render('sun_tv');
 });
 
+app.get('/live/Sun_TV_HD', (req, res) => {
+  res.render('live/Sun_TV_HD');
+});
+
 app.get('/vijay_tv', (req, res) => {
   res.render('vijay_tv');
 });
 
+app.get('/live/Vijay_TV_HD', (req, res) => {
+  res.render('live/Vijay_TV_HD');
+});
+
+
 app.get('/sun_music', (req, res) => {
   res.render('sun_music');
+});
+
+app.get('/live/Sun_Music_HD', (req, res) => {
+  res.render('live/Sun_Music_HD');
 });
 
 app.get('/colors_tamil', (req, res) => {
   res.render('colors_tamil');
 });
 
+app.get('/live/Colors_Tamil_HD', (req, res) => {
+  res.render('live/Colors_Tamil_HD');
+});
+
 app.get('/zee_tamil', (req, res) => {
   res.render('zee_tamil');
+});
+
+app.get('/live/Zee_Tamil', (req, res) => {
+  res.render('live/Zee_Tamil');
 });
 
 io.on('connection', function(socket) {
