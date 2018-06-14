@@ -7,6 +7,7 @@ var io = require('socket.io')(http);
 const bodyParser = require('body-parser');
 const request = require("request");
 const fs = require('fs');
+const path = require('path');
 var moment = require('moment');
 moment().format();
 var cloudscraper = require('cloudscraper');
@@ -24,7 +25,7 @@ var port = process.env.PORT;
 app.set('views', __dirname + '/views');
 app.set('view engine', "ejs");
 app.engine('ejs', require('ejs').__express);
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public'),{index:false,extensions:['html']}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -351,6 +352,8 @@ app.get('/hbdshahitha', (req, res) => {
   res.render('hbdsash');
 });
 
+// sun tv live
+
 app.get('/sun_tv', (req, res) => {
   res.render('sun_tv');
 });
@@ -358,6 +361,9 @@ app.get('/sun_tv', (req, res) => {
 app.get('/live/Sun_TV_HD', (req, res) => {
   res.render('live/Sun_TV_HD');
 });
+
+
+// vijay tv live
 
 app.get('/vijay_tv', (req, res) => {
   res.render('vijay_tv');
@@ -368,6 +374,9 @@ app.get('/live/Vijay_TV_HD', (req, res) => {
 });
 
 
+// sun music live hd
+
+
 app.get('/sun_music', (req, res) => {
   res.render('sun_music');
 });
@@ -375,6 +384,9 @@ app.get('/sun_music', (req, res) => {
 app.get('/live/Sun_Music_HD', (req, res) => {
   res.render('live/Sun_Music_HD');
 });
+
+
+// colors tamil live hd
 
 app.get('/colors_tamil', (req, res) => {
   res.render('colors_tamil');
@@ -384,6 +396,9 @@ app.get('/live/Colors_Tamil_HD', (req, res) => {
   res.render('live/Colors_Tamil_HD');
 });
 
+
+// Zee tamil live
+
 app.get('/zee_tamil', (req, res) => {
   res.render('zee_tamil');
 });
@@ -391,6 +406,13 @@ app.get('/zee_tamil', (req, res) => {
 app.get('/live/Zee_Tamil', (req, res) => {
   res.render('live/Zee_Tamil');
 });
+
+
+
+
+
+
+
 
 io.on('connection', function(socket) {
   console.log('a user connected');
