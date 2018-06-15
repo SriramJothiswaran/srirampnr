@@ -352,14 +352,16 @@ app.get('/hbdshahitha', (req, res) => {
   res.render('hbdsash');
 });
 
+// Live Tv channels url direct start here. this is for HD channels
+
 // sun tv hd live
 
 app.get('/sun_tv_hd', (req, res) => {
   res.render('channels/hd/sun_tv_hd');
 });
 
-app.get('/live/Sun_TV_HD', (req, res) => {
-  res.render('live/Sun_TV_HD');
+app.get('/live/HD/Sun_TV_HD', (req, res) => {
+  res.render('live/HD/Sun_TV_HD');
 });
 
 
@@ -369,8 +371,8 @@ app.get('/vijay_tv_hd', (req, res) => {
   res.render('channels/hd/vijay_tv_hd');
 });
 
-app.get('/live/Vijay_TV_HD', (req, res) => {
-  res.render('live/Vijay_TV_HD');
+app.get('/live/HD/Vijay_TV_HD', (req, res) => {
+  res.render('live/HD/Vijay_TV_HD');
 });
 
 
@@ -381,8 +383,8 @@ app.get('/sun_music_hd', (req, res) => {
   res.render('channels/hd/sun_music_hd');
 });
 
-app.get('/live/Sun_Music_HD', (req, res) => {
-  res.render('live/Sun_Music_HD');
+app.get('/live/HD/Sun_Music_HD', (req, res) => {
+  res.render('live/HD/Sun_Music_HD');
 });
 
 // Zee tamil HD live
@@ -391,8 +393,8 @@ app.get('/zee_tamil_hd', (req, res) => {
   res.render('channels/hd/zee_tamil_hd');
 });
 
-app.get('/live/Zee_Tamil_HD', (req, res) => {
-  res.render('live/Zee_Tamil_HD');
+app.get('/live/HD/Zee_Tamil_HD', (req, res) => {
+  res.render('live/HD/Zee_Tamil_HD');
 });
 
 // colors tamil live hd
@@ -401,8 +403,8 @@ app.get('/colors_tamil_hd', (req, res) => {
   res.render('channels/hd/colors_tamil_hd');
 });
 
-app.get('/live/Colors_Tamil_HD', (req, res) => {
-  res.render('live/Colors_Tamil_HD');
+app.get('/live/HD/Colors_Tamil_HD', (req, res) => {
+  res.render('live/HD/Colors_Tamil_HD');
 });
 
 
@@ -412,8 +414,8 @@ app.get('/jaya_tv_hd', (req, res) => {
   res.render('channels/hd/jaya_tv_hd');
 });
 
-app.get('/live/Jaya_TV_HD', (req, res) => {
-  res.render('live/Jaya_TV_HD');
+app.get('/live/HD/Jaya_TV_HD', (req, res) => {
+  res.render('live/HD/Jaya_TV_HD');
 });
 
 
@@ -427,17 +429,17 @@ app.get('/sun_tv', (req, res) => {
   res.render('channels/sd/sun_tv');
 });
 
-app.get('/live/Sun_TV', (req, res) => {
-  res.render('live/Sun_TV');
+app.get('/live/SD/Sun_TV', (req, res) => {
+  res.render('live/SD/Sun_TV');
 });
 
-// Jaya Movies Tv Live
-app.get('/j_movies', (req, res) => {
-  res.render('channels/sd/j_movies');
+// Vijay tv live
+app.get('/vijay_tv', (req, res) => {
+  res.render('channels/sd/vijay_tv');
 });
 
-app.get('/live/J_Movies', (req, res) => {
-  res.render('live/J_Movies');
+app.get('/live/SD/Vijay_TV', (req, res) => {
+  res.render('live/SD/Vijay_TV');
 });
 
 // Zee tamil live
@@ -446,9 +448,53 @@ app.get('/zee_tamil', (req, res) => {
   res.render('channels/sd/zee_tamil');
 });
 
-app.get('/live/Zee_Tamil', (req, res) => {
-  res.render('live/Zee_Tamil');
+app.get('/live/SD/Zee_Tamil', (req, res) => {
+  res.render('live/SD/Zee_Tamil');
 });
+
+// Colors tamil live
+
+app.get('/colors_tamil', (req, res) => {
+  res.render('channels/sd/colors_tamil');
+});
+
+app.get('/live/SD/Colors_Tamil', (req, res) => {
+  res.render('live/SD/Colors_Tamil');
+});
+
+
+// Sun Music Tv Live
+app.get('/sun_music', (req, res) => {
+  res.render('channels/sd/sun_music');
+});
+
+app.get('/live/SD/Sun_Music', (req, res) => {
+  res.render('live/SD/Sun_Music');
+});
+
+// Sun Music Tv Live
+app.get('/jaya_tv', (req, res) => {
+  res.render('channels/sd/jaya_tv');
+});
+
+app.get('/live/SD/Jaya_TV', (req, res) => {
+  res.render('live/SD/Jaya_TV');
+});
+
+
+
+
+// Jaya Movies Tv Live
+app.get('/j_movies', (req, res) => {
+  res.render('channels/sd/j_movies');
+});
+
+app.get('/live/SD/J_Movies', (req, res) => {
+  res.render('live/SD/J_Movies');
+});
+
+
+
 
 
 
