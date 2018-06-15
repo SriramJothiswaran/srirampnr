@@ -1043,6 +1043,8 @@ a:hover {
 
 }
 
+
+
 .img-shadow-1
 {
 -webkit-box-shadow: 0 28px 16px -26px black;
@@ -1079,4 +1081,9 @@ transition:all .6s ease-in-out;
 -moz-transition:all .6s ease-in-out;
 -ms-transition:all .6s ease-in-out;
 -o-transition:all .6s ease-in-out;
+}
+
+.image-hover div{
+  margin-left: 125px;
+  font-weight: bolder;
 }

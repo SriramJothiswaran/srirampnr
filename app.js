@@ -352,10 +352,10 @@ app.get('/hbdshahitha', (req, res) => {
   res.render('hbdsash');
 });
 
-// sun tv live
+// sun tv hd live
 
-app.get('/sun_tv', (req, res) => {
-  res.render('sun_tv');
+app.get('/sun_tv_hd', (req, res) => {
+  res.render('channels/hd/sun_tv_hd');
 });
 
 app.get('/live/Sun_TV_HD', (req, res) => {
@@ -363,10 +363,10 @@ app.get('/live/Sun_TV_HD', (req, res) => {
 });
 
 
-// vijay tv live
+// vijay tv hd live
 
-app.get('/vijay_tv', (req, res) => {
-  res.render('vijay_tv');
+app.get('/vijay_tv_hd', (req, res) => {
+  res.render('channels/hd/vijay_tv_hd');
 });
 
 app.get('/live/Vijay_TV_HD', (req, res) => {
@@ -377,19 +377,28 @@ app.get('/live/Vijay_TV_HD', (req, res) => {
 // sun music live hd
 
 
-app.get('/sun_music', (req, res) => {
-  res.render('sun_music');
+app.get('/sun_music_hd', (req, res) => {
+  res.render('channels/hd/sun_music_hd');
 });
 
 app.get('/live/Sun_Music_HD', (req, res) => {
   res.render('live/Sun_Music_HD');
 });
 
+// Zee tamil HD live
+
+app.get('/zee_tamil_hd', (req, res) => {
+  res.render('channels/hd/zee_tamil_hd');
+});
+
+app.get('/live/Zee_Tamil_HD', (req, res) => {
+  res.render('live/Zee_Tamil_HD');
+});
 
 // colors tamil live hd
 
-app.get('/colors_tamil', (req, res) => {
-  res.render('colors_tamil');
+app.get('/colors_tamil_hd', (req, res) => {
+  res.render('channels/hd/colors_tamil_hd');
 });
 
 app.get('/live/Colors_Tamil_HD', (req, res) => {
@@ -397,20 +406,49 @@ app.get('/live/Colors_Tamil_HD', (req, res) => {
 });
 
 
+
+// Jaya Tv hd live
+app.get('/jaya_tv_hd', (req, res) => {
+  res.render('channels/hd/jaya_tv_hd');
+});
+
+app.get('/live/Jaya_TV_HD', (req, res) => {
+  res.render('live/Jaya_TV_HD');
+});
+
+
+
+
+// This section contains normal quality live channels url redirects
+
+// sun tv live
+
+app.get('/sun_tv', (req, res) => {
+  res.render('channels/sd/sun_tv');
+});
+
+app.get('/live/Sun_TV', (req, res) => {
+  res.render('live/Sun_TV');
+});
+
+// Jaya Movies Tv Live
+app.get('/j_movies', (req, res) => {
+  res.render('channels/sd/j_movies');
+});
+
+app.get('/live/J_Movies', (req, res) => {
+  res.render('live/J_Movies');
+});
+
 // Zee tamil live
 
 app.get('/zee_tamil', (req, res) => {
-  res.render('zee_tamil');
+  res.render('channels/sd/zee_tamil');
 });
 
 app.get('/live/Zee_Tamil', (req, res) => {
   res.render('live/Zee_Tamil');
 });
-
-
-
-
-
 
 
 
