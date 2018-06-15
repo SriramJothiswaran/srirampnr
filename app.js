@@ -407,6 +407,15 @@ app.get('/live/HD/Colors_Tamil_HD', (req, res) => {
   res.render('live/HD/Colors_Tamil_HD');
 });
 
+// colors tamil live hd
+
+app.get('/k_tv_hd', (req, res) => {
+  res.render('channels/hd/k_tv_hd');
+});
+
+app.get('/live/HD/K_TV_HD', (req, res) => {
+  res.render('live/HD/K_TV_HD');
+});
 
 
 // Jaya Tv hd live
@@ -481,6 +490,14 @@ app.get('/live/SD/Jaya_TV', (req, res) => {
   res.render('live/SD/Jaya_TV');
 });
 
+// Sun Music Tv Live
+app.get('/k_tv', (req, res) => {
+  res.render('channels/sd/k_tv');
+});
+
+app.get('/live/SD/K_TV', (req, res) => {
+  res.render('live/SD/K_TV');
+});
 
 
 
