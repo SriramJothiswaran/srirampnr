@@ -514,6 +514,11 @@ app.get('/live/SD/J_Movies', (req, res) => {
 
 
 
+//Low Quality Streams
+app.get('/live/LQ/Vijay_TV_LQ', (req, res) => {
+  res.render('live/LQ/Vijay_TV_LQ');
+});
+
 
 io.on('connection', function(socket) {
   console.log('a user connected');
