@@ -87,8 +87,7 @@ function getStatus(req, res, next) {
     }
 
   });
-  console.log("inside getstatus");
-  next();
+    next();
 
   // cloudscraper.get(btcxUrl, function(error, response, body) {
   //   if (error) {
@@ -195,9 +194,9 @@ function getTrivia(req,res,next){
 }
 
 app.get("/", getStatus,getTrivia, function(req, res) {
-  console.log("hellllllloooooooo");
   request('http://synd.cricbuzz.com/j2me/1.0/livematches.xml', function(error, response, body) {
     var xml = body;
+  if(xml.length > 1){
     to_json(xml, function(error, data) {
       // res.send(data.mchdata.match["0"]);
       res.render("home", {
@@ -218,6 +217,25 @@ app.get("/", getStatus,getTrivia, function(req, res) {
       });
 
     });
+  }
+  if(xml.length < 1){
+    res.render("home", {
+      btcvalue: btcvalue,
+      xrpvalue: xrpvalue,
+      ethvalue: ethvalue,
+      onedayBtc: onedayBtc,
+      onedayXrp: onedayXrp,
+      onedayEth: onedayEth,
+      btcTimeStamp: btcTimeStamp,
+      xrpTimeStamp: xrpTimeStamp,
+      ethTimeStamp: ethTimeStamp,
+      newsData: newsData,
+      cricketScore: false,
+      questionValue: questionValue,
+      randomizedOptions: randomizedOptions,
+      correctAnswerIndex: correctAnswerIndex
+    });
+  }
 
   });
 
@@ -284,7 +302,6 @@ app.get('/mediumdownload', (req, res) => {
   let url = req.query.url;
   url = url.split('-');
   url = url[url.length - 1];
-  console.log(url);
   request.get('https://medium.com/p/' + url + '/notes', function(err, ress, body) {
     if (err) {
       console.log('error occured');
@@ -521,15 +538,17 @@ app.get('/live/LQ/Vijay_TV_LQ', (req, res) => {
 
 
 io.on('connection', function(socket) {
-  console.log('a user connected');
   setInterval(function() {
     request('http://synd.cricbuzz.com/j2me/1.0/livematches.xml', function(error, response, body) {
       var xml = body;
-      to_json(xml, function(error, data) {
-        // res.send(data.mchdata.match["0"]);
-        // console.log(data.mchdata.match["0"]);
-        socket.emit('new_score', data.mchdata.match["0"]);
-      });
+      if(xml.length > 1){
+        to_json(xml, function(error, data) {
+          // res.send(data.mchdata.match["0"]);
+          // console.log(data.mchdata.match["0"]);
+          socket.emit('new_score', data.mchdata.match["0"]);
+        });
+      }
+
 
     });
 

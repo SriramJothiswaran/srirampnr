@@ -70,7 +70,10 @@
   </section>
   <div class="Marquee">
     <img width="90px" height="180px" style="margin-top: -260px" src="/newspaper.gif" alt="">
-    <p>Urgent commit made ! Expect this feature in next commit !</p>
+    <Marquee>Access to this website contents except blog will be controlled via authentication, this is to reduce server load and copyright infringement for live tv channels. Registration will be open by this month end. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Moving forward use this domain <a href="www.sriramj.ooo" style="color: yellow">www.sriramj.ooo</a> </Marquee>
   </div>
   <div class="tile is-ancestor">
     <div class="tile is-4 is-vertical is-parent">
@@ -262,6 +265,9 @@
 
                               <% }%>
                                 <hr>
+                                <% if(cricketScore){%>
+                                  <div>
+
                                 <div class="notification is-danger">
                                   <button class="delete"></button> This is exclusively for IPL 2018
                                 </div>
@@ -279,6 +285,13 @@
                                       <h2 id="match-status" style="color:white"><%=cricketScore.state.$.status%></h2>
                                       <h2 id="match-addnstatus" style="color:white; font-weight:bold"><%=cricketScore.state.$.addnStatus%></h2>
                                       <%}%>
+                                      </div>
+                                      <% }%>
+                                      <% if(!cricketScore){%>
+                                        <h1>No match data to show</h1>
+                                      <% }%>
+
+
       </div>
     </div>
   </div>
