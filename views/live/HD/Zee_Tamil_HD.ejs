@@ -7,6 +7,8 @@
   <link href="https://unpkg.com/video.js@5.16.0/dist/video-js.css" rel="stylesheet">
   <script src="https://unpkg.com/video.js@5.16.0/dist/video.js"></script>
   <script src="https://unpkg.com/videojs-contrib-hls@4.1.1/dist/videojs-contrib-hls.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+
 
 
 
@@ -14,12 +16,10 @@
 </head>
 
 <body>
-  <video id="my_video_1" class="video-js vjs-default-skin" marginheight="0" marginwidth="0" frameborder="0" scrolling="no" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;" width="100%" controls preload="auto" data-setup='{}'>
-    <source src="http://cshms1.airtel.tv/PLTV/88888888/224/3221225929/index.m3u8" type="application/x-mpegURL">
-  </video>
-
-
-
+  <div id="player"></div>
+  <script>
+    var player = new Clappr.Player({source: "http://smumcdnems01.cdnsrv.jio.com/jiotv.live.cdn.jio.com/Zee_TV_HD/Zee_TV_HD_600.m3u8?token=_&jct=8ieVWm9DpwJC0NK815DkAQ&pxe=1531154703&st=m7XFe6GgsfEuXCOzYa1zU6p2dWKkY6gYq3qoHTTvXY8Y-Po.*eelGz2S96GEeyzguy83GVP9WVwHac3jMEwFJrWjYDH9I4pX2riCjmg6G*&token=_&jct=8ieVWm9DpwJC0NK815DkAQ&pxe=1531154703&st=m7XFe6GgsfEuXCOzYa1zU6p2dWKkY6gYq3qoHTTvXY8Y-Po.*eelGz2S96GEeyzguy83GVP9WVwHac3jMEwFJrWjYDH9I4pX2riCjmg6G*", parentId: "#player"});
+  </script>
 </body>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111767825-1"></script>
 <script>
