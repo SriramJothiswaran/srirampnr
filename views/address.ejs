@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      #map {
+      height: 100%;
+      }
+
+
+      html,
+      body {
+      height: 80%;
+      margin: 0;
+      padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkEFitCmK9jViwHyOzjpGeIkk5aHFz17g&callback=initMap">
+</script>
+<script type="text/javascript">
+function initMap() {
+var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 20,
+  center: {
+    lat: 13.108558,
+    lng: 80.247208
+  }
+});
+
+var image = 'http://localhost:5000/images/google_home.png';
+var marker = new google.maps.Marker({
+  position: {
+    lat: 13.108558,
+    lng: 80.247208
+  },
+  map: map,
+  icon: {
+    url: 'http://localhost:5000/images/google_home.png',
+    labelOrigin: new google.maps.Point(25, 80)
+  },
+  label: {
+    text: "Narasiman Avenue",
+    color: "red",
+    fontSize: "20px",
+    fontWeight: "bold"
+  }
+});
+
+setInterval(toggleBounce, 100);
+
+function toggleBounce() {
+  console.log("hemmloo");
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+
+}
+}
+</script>
+</html>

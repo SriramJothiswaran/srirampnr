@@ -538,6 +538,11 @@ app.get('/live/LQ/Vijay_TV_LQ', (req, res) => {
 });
 
 
+app.get('/address', (req, res) => {
+  res.render('address');
+});
+
+
 io.on('connection', function(socket) {
   setInterval(function() {
     request('http://synd.cricbuzz.com/j2me/1.0/livematches.xml', function(error, response, body) {
