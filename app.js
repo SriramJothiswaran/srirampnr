@@ -17,7 +17,6 @@ const bot = new TelegramBot(token, {polling: true});
 const download = require('download');
 var to_json = require('xmljson').to_json;
 const smule = require('smule-api');
-var http = require('http'); 
 
 
 
