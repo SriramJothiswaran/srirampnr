@@ -17,6 +17,8 @@ const bot = new TelegramBot(token, {polling: true});
 const download = require('download');
 var to_json = require('xmljson').to_json;
 const smule = require('smule-api');
+var http = require('http'); 
+
 
 
 
@@ -560,6 +562,31 @@ io.on('connection', function(socket) {
 
   }, 5000)
 });
+
+
+function startKeepAlive() {
+    setInterval(function() {
+        var options = {
+            host: 'your_app_name.herokuapp.com',
+            port: 80,
+            path: '/'
+        };
+        http.get(options, function(res) {
+            res.on('data', function(chunk) {
+                try {
+                    // optional logging... disable after it's working
+                    console.log("HEROKU RESPONSE: " + chunk);
+                } catch (err) {
+                    console.log(err.message);
+                }
+            });
+        }).on('error', function(err) {
+            console.log("Error: " + err.message);
+        });
+    }, 20 * 60 * 1000); // load every 20 minutes
+}
+
+startKeepAlive();
 
 http.listen(port, function() {
   console.log('listening on port: ' + port);
