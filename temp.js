@@ -14,6 +14,10 @@ const parser = port.pipe(new Readline());
 
 
 function employeeSwipe(){
+  port.open(function (err) {
+if (err) {
+  return console.log('Error opening port: ', err.message)
+}else{
   port.on('readable', function () {
   console.log('Data:', port.read())
 })
@@ -22,6 +26,9 @@ function employeeSwipe(){
 port.on('data', function (data) {
   console.log('Data:', data)
 })
+}});
+
+
 }
 
 // Keep a global reference of the window object, if you don't, the window will
