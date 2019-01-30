@@ -1,32 +1,24 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron');
-const SerialPort = require('serialport')
-const Readline = require('@serialport/parser-readline');
-const port = new SerialPort('COM7', {
-  baudRate: 9600,
-  autoOpen: false
+var serialport = require('serialport');
+var SerialPort = serialport.SerialPort;
+// Open the port
+var port = new SerialPort("COM3", {
+    baudrate: 9600,
+    parser: serialport.parsers.readline("\n")
 });
-
-const parser = port.pipe(new Readline());
 
 
 
 
 
 function employeeSwipe(){
-  port.open(function (err) {
-if (err) {
-  return console.log('Error opening port: ', err.message)
-}else{
-  port.on('readable', function () {
-  console.log('Data:', port.read())
-})
-
-// Switches the port into "flowing mode"
-port.on('data', function (data) {
-  console.log('Data:', data)
-})
-}});
+  port.on("open", function () {
+    console.log('open');
+    port.on('data', function(data) {
+        console.log(data);
+    });
+});
 
 
 }
