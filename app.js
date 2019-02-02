@@ -17,12 +17,14 @@ const bot = new TelegramBot(token, {polling: true});
 const download = require('download');
 var to_json = require('xmljson').to_json;
 const smule = require('smule-api');
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('69c508e32f1b450a96e259507de25b52');
 
 
 
 
-var port = process.env.PORT;
-// var port = 5000;
+// var port = process.env.PORT;
+var port = 5000;
 
 app.set('views', __dirname + '/views');
 app.set('view engine', "ejs");
@@ -287,6 +289,21 @@ bot.on('message', (msg) => {
       bot.sendMessage(msg.chat.id, `Ripple(XRP) price is $${telXrpInr}`);
     });
 
+  }
+
+  if (msg.text.toString().toLowerCase() === '/news') {
+    console.log('test');
+    request.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=69c508e32f1b450a96e259507de25b52', function(err, res, body) {
+      if (err) {
+        console.log('err');
+      } else {
+        console.log('test2');
+        var bodyjson = JSON.parse(body);
+        console.log(bodyjson.articles[0].title);
+        bot.sendMessage(msg.chat.id, bodyjson.articles[0].title + '<a href="' + bodyjson.articles[0].url + '"> Read More </a>' , {parse_mode : "HTML"});
+      }
+
+    });
   }
 
 });
