@@ -321,8 +321,8 @@ setInterval(function(){
       console.log('test2');
       var bodyjson = JSON.parse(body);
       // var articleText = "<b>INDIA</b>" + "\n";
-      // var articleText = "";
-      // bodyjson.articles.forEach(function(element) {
+      var articleText = "";
+      bodyjson.articles.forEach(function(element) {
         articleText =  articleText + "\u2b50" + element.title + ' - ' + '<a href="' + element.url + '"> Read More </a>' + "\n";
       });
       bot.sendMessage('@Indiaheadlines', articleText , {parse_mode : "HTML"});
