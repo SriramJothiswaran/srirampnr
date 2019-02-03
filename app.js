@@ -312,6 +312,29 @@ bot.on('message', (msg) => {
 
 });
 
+
+setInterval(function(){
+  request.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=69c508e32f1b450a96e259507de25b52', function(err, res, body) {
+    if (err) {
+      console.log('err');
+    } else {
+      console.log('test2');
+      var bodyjson = JSON.parse(body);
+      // var articleText = "<b>INDIA</b>" + "\n";
+      // var articleText = "";
+      // bodyjson.articles.forEach(function(element) {
+        articleText =  articleText + "\u2b50" + element.title + ' - ' + '<a href="' + element.url + '"> Read More </a>' + "\n";
+      });
+      bot.sendMessage('@Indiaheadlines', articleText , {parse_mode : "HTML"});
+      // bot.sendMessage('@mine1231', articleText , {parse_mode : "HTML"});
+    }
+
+  });
+}, 1000 * 60 * 60);
+
+
+
+
 bot.on('polling_error', (error) => {
 
   console.log(error.code); // => 'EFATAL'
