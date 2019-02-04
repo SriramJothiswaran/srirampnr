@@ -330,7 +330,35 @@ setInterval(function(){
     }
 
   });
-}, 1000 * 60 * 60);
+}, 3600000);
+
+
+// setInterval(function(){
+//   request.get('https://api.railwayapi.com/v2/pnr-status/pnr/4454730417/apikey/mlab4hyemq/', function(err, res, body) {
+//     if (err) {
+//       console.log('err');
+//     } else {
+//       var bodyjson = JSON.parse(body);
+//       console.log(bodyjson);
+//       var pnr = bodyjson.pnr;
+//       var doj= bodyjson.doj;
+//       var fromLocation = bodyjson.from_station.name;
+//       var toLocation = bodyjson.to_station.name;
+//       var boardingLocation = bodyjson.boarding_point.name;
+//       var trainName= bodyjson.train.name;
+//       var trainno = bodyjson.train.number;
+//       var journeyClass = bodyjson.journey_class.code;
+//       var passengerList = "\n" + "\n";
+//       bodyjson.passengers.forEach(function(element) {
+//         passengerList = passengerList + "Passenger No: " + element.no + "\n" + "Booking Status: " + element.booking_status + "Current Status: " + element.current_status + "\n" + "\n" + "\n";
+//       });
+//
+//       var responseMessage = "PNR: "+ pnr + "\n" + "DOJ: " + doj + "\n" + "FROM: " + fromLocation + "\n" + "TO: " + toLocation + "\n" + "BOARDING: " + boardingLocation + "\n" + "Train Name: " + trainName + "\n" + "Train No: " + trainno + "\n" + "Class: " + journeyClass + passengerList;
+//       bot.sendMessage('@mine1231', responseMessage , {parse_mode : "HTML"});
+//     }
+//
+//   });
+// }, 10000);
 
 
 
