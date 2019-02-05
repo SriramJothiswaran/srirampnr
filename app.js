@@ -635,29 +635,29 @@ io.on('connection', function(socket) {
 });
 
 
-function startKeepAlive() {
-    setInterval(function() {
-        var options = {
-            host: 'sriram-pnr.herokuapp.com',
-            port: port,
-            path: '/'
-        };
-        http.get(options, function(res) {
-            res.on('data', function(chunk) {
-                try {
-                    // optional logging... disable after it's working
-                    console.log("HEROKU RESPONSE: " + chunk);
-                } catch (err) {
-                    console.log(err.message);
-                }
-            });
-        }).on('error', function(err) {
-            console.log("Error: " + err.message);
-        });
-    }, 10 * 60 * 1000); // load every 20 minutes
-}
-
-startKeepAlive();
+// function startKeepAlive() {
+//     setInterval(function() {
+//         var options = {
+//             host: 'sriram-pnr.herokuapp.com',
+//             port: port,
+//             path: '/'
+//         };
+//         http.get(options, function(res) {
+//             res.on('data', function(chunk) {
+//                 try {
+//                     // optional logging... disable after it's working
+//                     console.log("HEROKU RESPONSE: " + chunk);
+//                 } catch (err) {
+//                     console.log(err.message);
+//                 }
+//             });
+//         }).on('error', function(err) {
+//             console.log("Error: " + err.message);
+//         });
+//     }, 10 * 60 * 1000); // load every 20 minutes
+// }
+//
+// startKeepAlive();
 
 http.listen(port, function() {
   console.log('listening on port: ' + port);
