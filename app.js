@@ -638,8 +638,8 @@ io.on('connection', function(socket) {
 function startKeepAlive() {
     setInterval(function() {
         var options = {
-            host: 'your_app_name.herokuapp.com',
-            port: 80,
+            host: 'sriram-pnr.herokuapp.com',
+            port: port,
             path: '/'
         };
         http.get(options, function(res) {
@@ -654,7 +654,7 @@ function startKeepAlive() {
         }).on('error', function(err) {
             console.log("Error: " + err.message);
         });
-    }, 20 * 60 * 1000); // load every 20 minutes
+    }, 10 * 60 * 1000); // load every 20 minutes
 }
 
 startKeepAlive();
