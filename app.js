@@ -635,6 +635,11 @@ io.on('connection', function(socket) {
 });
 
 
+setInterval(function() {
+    console.log('pinging app');
+    http.get("http:sriram-pnr.herokuapp.com");
+}, 10000); // every 5 minutes (300000)
+
 // function startKeepAlive() {
 //     setInterval(function() {
 //         var options = {
