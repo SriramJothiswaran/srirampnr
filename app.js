@@ -198,11 +198,7 @@ function getTrivia(req,res,next){
 }
 
 app.get("/", getStatus,getTrivia, function(req, res) {
-  request('http://synd.cricbuzz.com/j2me/1.0/livematches.xml', function(error, response, body) {
-    var xml = body;
-  if(xml.length > 1){
-    to_json(xml, function(error, data) {
-      // res.send(data.mchdata.match["0"]);
+
       res.render("home", {
         btcvalue: btcvalue,
         xrpvalue: xrpvalue,
@@ -213,40 +209,15 @@ app.get("/", getStatus,getTrivia, function(req, res) {
         btcTimeStamp: btcTimeStamp,
         xrpTimeStamp: xrpTimeStamp,
         ethTimeStamp: ethTimeStamp,
-        cricketScore: data.mchdata.match[0],
         newsData: newsData,
+        cricketScore: false,
         questionValue: questionValue,
         randomizedOptions: randomizedOptions,
         correctAnswerIndex: correctAnswerIndex
       });
 
     });
-  }
-  if(xml.length < 1){
-    res.render("home", {
-      btcvalue: btcvalue,
-      xrpvalue: xrpvalue,
-      ethvalue: ethvalue,
-      onedayBtc: onedayBtc,
-      onedayXrp: onedayXrp,
-      onedayEth: onedayEth,
-      btcTimeStamp: btcTimeStamp,
-      xrpTimeStamp: xrpTimeStamp,
-      ethTimeStamp: ethTimeStamp,
-      newsData: newsData,
-      cricketScore: false,
-      questionValue: questionValue,
-      randomizedOptions: randomizedOptions,
-      correctAnswerIndex: correctAnswerIndex
-    });
-  }
 
-  });
-
-
-
-
-});
 app.get("/gift", function(req, res) {
   res.render("newyear");
 
@@ -618,19 +589,6 @@ app.get('/address', (req, res) => {
 
 io.on('connection', function(socket) {
   setInterval(function() {
-    request('http://synd.cricbuzz.com/j2me/1.0/livematches.xml', function(error, response, body) {
-      var xml = body;
-      if(xml.length > 1){
-        to_json(xml, function(error, data) {
-          // res.send(data.mchdata.match["0"]);
-          // console.log(data.mchdata.match["0"]);
-          socket.emit('new_score', data.mchdata.match["0"]);
-        });
-      }
-
-
-    });
-
   }, 5000)
 });
 
